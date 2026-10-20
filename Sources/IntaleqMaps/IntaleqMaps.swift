@@ -33,3 +33,44 @@ public class IntaleqMaps {
         IntaleqTelemetryService.shared.startTracking(driverId: deviceId)
     }
 }
+
+// ─────────────────────────────────────────────────────────────
+// Compatibility Typealiases (matching Google Maps iOS SDK GMS*)
+// ─────────────────────────────────────────────────────────────
+
+public typealias GMSMapView = IntaleqMapView
+public typealias GMSCameraPosition = InlqCameraPosition
+public typealias GMSCameraUpdate = InlqCameraUpdate
+public typealias GMSCoordinateBounds = InlqLatLngBounds
+public typealias GMSMarker = InlqMarker
+public typealias GMSPolyline = InlqPolyline
+public typealias GMSPolygon = InlqPolygon
+public typealias GMSCircle = InlqCircle
+
+// ─────────────────────────────────────────────────────────────
+// Primary Siro Brand Typealiases
+// ─────────────────────────────────────────────────────────────
+
+public typealias SiroMap = IntaleqMaps
+public typealias SiroMaps = IntaleqMaps
+public typealias SiroMapView = IntaleqMapView
+public typealias SiroMapController = IntaleqMapController
+public typealias SiroMapViewDelegate = IntaleqMapViewDelegate
+public typealias SiroCameraPosition = InlqCameraPosition
+public typealias SiroCameraUpdate = InlqCameraUpdate
+public typealias SiroLatLng = InlqLatLng
+public typealias SiroLatLngBounds = InlqLatLngBounds
+public typealias SiroMarker = InlqMarker
+public typealias SiroPolyline = InlqPolyline
+public typealias SiroPolygon = InlqPolygon
+public typealias SiroCircle = InlqCircle
+public typealias SiroBitmap = InlqBitmap
+public typealias SiroInfoWindow = InlqInfoWindow
+public typealias SiroMapType = IntaleqMapType
+public typealias SiroStyles = IntaleqStyles
+
+#if canImport(SwiftUI)
+public typealias SiroMapViewRepresentable = IntaleqMapViewRepresentable
+#endif
+
+

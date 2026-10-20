@@ -4,25 +4,28 @@
 import PackageDescription
 
 let package = Package(
-    name: "IntaleqMaps",
+    name: "SiroMap",
     platforms: [
         .iOS(.v14),
         .macOS(.v11)
     ],
     products: [
         .library(
+            name: "SiroMap",
+            targets: ["SiroMap"]),
+        .library(
             name: "IntaleqMaps",
-            targets: ["IntaleqMaps"]),
+            targets: ["SiroMap"]),
     ],
     targets: [
         .target(
-            name: "IntaleqMaps",
+            name: "SiroMap",
             dependencies: [],
             path: "Sources/IntaleqMaps"
         ),
         .testTarget(
-            name: "IntaleqMapsTests",
-            dependencies: ["IntaleqMaps"],
+            name: "SiroMapTests",
+            dependencies: ["SiroMap"],
             path: "Tests/IntaleqMapsTests"
         )
     ]

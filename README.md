@@ -1,5 +1,5 @@
-# Intaleq Maps SDK for iOS (Swift)
-### خريطة انطلق لنظام آي أو إس (سويفت)
+# Siro Maps SDK for iOS (Swift)
+### خريطة سيرو لنظام آي أو إس (سويفت)
 
 [![Swift](https://img.shields.io/badge/Swift-5.9%2B-orange.svg)](https://swift.org)
 [![iOS](https://img.shields.io/badge/iOS-14.0%2B-blue.svg)](https://apple.com)
@@ -7,7 +7,7 @@
 [![CocoaPods](https://img.shields.io/badge/CocoaPods-Compatible-red.svg)](https://cocoapods.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Commercial 2D & 3D vector map SDK for iOS supporting 3D terrain elevation, architectural extrusions, routing, forward and reverse geocoding in Arabic and English.
+Commercial 2D & 3D sovereign vector map SDK for iOS supporting 3D terrain elevation, architectural extrusions, routing, forward and reverse geocoding in Arabic and English. 100% Google Maps iOS SDK (GMS*) compatible with backward compatibility for `IntaleqMaps`.
 
 ---
 
@@ -18,7 +18,7 @@ Commercial 2D & 3D vector map SDK for iOS supporting 3D terrain elevation, archi
 2. Select **File** > **Add Package Dependencies...**
 3. Enter repository URL:
    ```
-   https://github.com/Hamza-Ayed/intaleq_maps_ios.git
+   https://github.com/Hamza-Ayed/siro_map_ios.git
    ```
 4. Select version `1.0.0` or `Up to Next Major Version` and click **Add Package**.
 
@@ -26,7 +26,7 @@ Or in your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Hamza-Ayed/intaleq_maps_ios.git", from: "1.0.0")
+    .package(url: "https://github.com/Hamza-Ayed/siro_map_ios.git", from: "1.0.0")
 ]
 ```
 
@@ -34,7 +34,7 @@ dependencies: [
 Add to your `Podfile`:
 
 ```ruby
-pod 'IntaleqMaps', '~> 1.0.0'
+pod 'SiroMap', '~> 1.0.0'
 ```
 
 ---
@@ -45,12 +45,12 @@ pod 'IntaleqMaps', '~> 1.0.0'
 
 ```swift
 import SwiftUI
-import IntaleqMaps
+import SiroMap
 
 @main
 struct MyApp: App {
     init() {
-        IntaleqMaps.initialize(
+        SiroMap.initialize(
             apiKey: "YOUR_API_KEY",
             baseUrl: "https://map-saas.intaleqapp.com"
         )
@@ -68,15 +68,15 @@ struct MyApp: App {
 
 ```swift
 import SwiftUI
-import IntaleqMaps
+import SiroMap
 
 struct ContentView: View {
     @State private var is3D: Bool = true
 
     var body: some View {
-        IntaleqMapViewRepresentable(
-            camera: InlqCameraPosition(
-                target: InlqLatLng(latitude: 31.9539, longitude: 35.9106),
+        SiroMapViewRepresentable(
+            camera: SiroCameraPosition(
+                target: SiroLatLng(latitude: 31.9539, longitude: 35.9106),
                 zoom: 14.0,
                 viewingAngle: 65.0,
                 bearing: -35.0
@@ -89,22 +89,22 @@ struct ContentView: View {
 }
 ```
 
-### 3. Add Map in UIKit
+### 3. Add Map in UIKit (with 100% GMS compatibility)
 
 ```swift
 import UIKit
-import IntaleqMaps
+import SiroMap
 
 class ViewController: UIViewController {
-    var mapView: IntaleqMapView!
+    var mapView: SiroMapView! // Also GMSMapView compatible
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        mapView = IntaleqMapView(
+        mapView = SiroMapView(
             frame: view.bounds,
-            camera: InlqCameraPosition(
-                target: InlqLatLng(latitude: 31.9539, longitude: 35.9106),
+            camera: SiroCameraPosition(
+                target: SiroLatLng(latitude: 31.9539, longitude: 35.9106),
                 zoom: 13.0
             )
         )
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
             self?.mapView.setMapType(.terrain)
             self?.mapView.addMarker(
                 id: "amman_center",
-                coordinate: InlqLatLng(latitude: 31.9539, longitude: 35.9106),
+                coordinate: SiroLatLng(latitude: 31.9539, longitude: 35.9106),
                 title: "عمان - وسط البلد"
             )
         }
