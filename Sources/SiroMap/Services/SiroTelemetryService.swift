@@ -4,7 +4,7 @@
 import Foundation
 import CoreLocation
 
-public struct InlqTelemetryPoint: Codable {
+public struct SiroTelemetryPoint: Codable {
     public let driverId: String
     public let latitude: Double
     public let longitude: Double
@@ -49,9 +49,9 @@ public struct InlqTelemetryPoint: Codable {
  * 2. Batches and flushes points to MapSaaS backend every 2 minutes (or 40 points).
  * 3. Offline buffer retains up to 400 points when disconnected (~20 minutes offline).
  */
-public class IntaleqTelemetryService {
+public class SiroTelemetryService {
 
-    public static let shared = IntaleqTelemetryService()
+    public static let shared = SiroTelemetryService()
 
     public static let samplingIntervalSeconds: TimeInterval = 3
     public static let defaultUploadIntervalSeconds: TimeInterval = 120 // دقيقتان
@@ -59,13 +59,13 @@ public class IntaleqTelemetryService {
     public static let maxBufferSize: Int = 400 // حفظ حتى 400 نقطة دون اتصال
 
     private var defaultDriverId: String = "anonymous_driver"
-    private var buffer: [InlqTelemetryPoint] = []
+    private var buffer: [SiroTelemetryPoint] = []
     private var lastSampleDate: Date?
-    private var lastRecordedPoint: InlqTelemetryPoint?
+    private var lastRecordedPoint: SiroTelemetryPoint?
     private var flushTimer: Timer?
     private var isFlushing = false
 
-    private let syncQueue = DispatchQueue(label: "com.intaleq.maps.telemetry.queue")
+    private let syncQueue = DispatchQueue(label: "com.siro.maps.telemetry.queue")
 
     public var bufferedPointCount: Int {
         return syncQueue.sync { buffer.count }
@@ -141,7 +141,7 @@ public class IntaleqTelemetryService {
             }
 
             let driverId = customDriverId ?? defaultDriverId
-            let point = InlqTelemetryPoint(
+            let point = SiroTelemetryPoint(
                 driverId: driverId,
                 latitude: latitude,
                 longitude: longitude,
@@ -194,7 +194,7 @@ public class IntaleqTelemetryService {
             self.isFlushing = true
             let pointsToSend = Array(self.buffer)
 
-            guard let url = URL(string: "\(IntaleqMaps.shared.baseUrl)/api/telemetry/batch") else {
+            guard let url = URL(string: "\(SiroMaps.shared.baseUrl)/api/telemetry/batch") else {
                 self.isFlushing = false
                 completion?(false)
                 return
@@ -205,8 +205,8 @@ public class IntaleqTelemetryService {
             request.timeoutInterval = 15
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "Accept")
-            if !IntaleqMaps.shared.apiKey.isEmpty {
-                request.setValue(IntaleqMaps.shared.apiKey, forHTTPHeaderField: "x-api-key")
+            if !SiroMaps.shared.apiKey.isEmpty {
+                request.setValue(SiroMaps.shared.apiKey, forHTTPHeaderField: "x-api-key")
             }
 
             let payload: [String: Any] = [
@@ -256,10 +256,10 @@ public class IntaleqTelemetryService {
      * Real-time live telemetry push for a single point (POST /api/telemetry).
      */
     public func sendInstantTelemetry(
-        point: InlqTelemetryPoint,
+        point: SiroTelemetryPoint,
         completion: ((Bool) -> Void)? = nil
     ) {
-        guard let url = URL(string: "\(IntaleqMaps.shared.baseUrl)/api/telemetry") else {
+        guard let url = URL(string: "\(SiroMaps.shared.baseUrl)/api/telemetry") else {
             completion?(false)
             return
         }
@@ -269,8 +269,8 @@ public class IntaleqTelemetryService {
         request.timeoutInterval = 8
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        if !IntaleqMaps.shared.apiKey.isEmpty {
-            request.setValue(IntaleqMaps.shared.apiKey, forHTTPHeaderField: "x-api-key")
+        if !SiroMaps.shared.apiKey.isEmpty {
+            request.setValue(SiroMaps.shared.apiKey, forHTTPHeaderField: "x-api-key")
         }
 
         let dict: [String: Any] = [

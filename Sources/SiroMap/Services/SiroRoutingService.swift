@@ -1,9 +1,9 @@
 /**
- * وظيفة الملف: تنفيذ جزء IntaleqRoutingService ضمن حزمة العميل أو التطبيق.
+ * وظيفة الملف: تنفيذ جزء SiroRoutingService ضمن حزمة العميل أو التطبيق.
  */
 import Foundation
 
-public struct InlqRouteStep: Codable {
+public struct SiroRouteStep: Codable {
     public let instructionAr: String
     public let distanceMeters: Double
     public let durationSeconds: Double
@@ -11,9 +11,9 @@ public struct InlqRouteStep: Codable {
     public let inclinePercentage: Double
 }
 
-public struct InlqCommercialRoute: Codable {
-    public let coordinates: [InlqLatLng]
-    public let steps: [InlqRouteStep]
+public struct SiroCommercialRoute: Codable {
+    public let coordinates: [SiroLatLng]
+    public let steps: [SiroRouteStep]
     public let totalDistanceMeters: Double
     public let totalDurationSeconds: Double
     public let elevationGainMeters: Double
@@ -23,34 +23,34 @@ public struct InlqCommercialRoute: Codable {
 }
 
 /**
- * Commercial Routing Service calling Intaleq SaaS Routing API on iOS (Swift).
+ * Commercial Routing Service calling Siro SaaS Routing API on iOS (Swift).
  */
-public class IntaleqRoutingService {
+public class SiroRoutingService {
 
-    public static let shared = IntaleqRoutingService()
+    public static let shared = SiroRoutingService()
 
     private init() {}
 
     public func calculateRoute(
-        origin: InlqLatLng,
-        destination: InlqLatLng,
+        origin: SiroLatLng,
+        destination: SiroLatLng,
         profile: String = "car",
         locale: String = "ar",
-        completion: @escaping (Result<InlqCommercialRoute, Error>) -> Void
+        completion: @escaping (Result<SiroCommercialRoute, Error>) -> Void
     ) {
-        let urlStr = "\(IntaleqMaps.shared.baseUrl)/api/maps/route?" +
+        let urlStr = "\(SiroMaps.shared.baseUrl)/api/maps/route?" +
             "fromLat=\(origin.latitude)&fromLng=\(origin.longitude)&" +
             "toLat=\(destination.latitude)&toLng=\(destination.longitude)&" +
             "profile=\(profile)&steps=true&locale=\(locale)"
 
         guard let url = URL(string: urlStr) else {
-            completion(.failure(NSError(domain: "IntaleqMaps", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+            completion(.failure(NSError(domain: "SiroMaps", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue(IntaleqMaps.shared.apiKey, forHTTPHeaderField: "x-api-key")
+        request.setValue(SiroMaps.shared.apiKey, forHTTPHeaderField: "x-api-key")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
 
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -60,7 +60,7 @@ public class IntaleqRoutingService {
             }
 
             guard let data = data else {
-                completion(.failure(NSError(domain: "IntaleqMaps", code: -2, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
+                completion(.failure(NSError(domain: "SiroMaps", code: -2, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
                 return
             }
 
@@ -71,16 +71,16 @@ public class IntaleqRoutingService {
                     let distance = firstPath["distance"] as? Double ?? 0.0
                     let timeMs = firstPath["time"] as? Double ?? 0.0
 
-                    var coords: [InlqLatLng] = []
+                    var coords: [SiroLatLng] = []
                     if let points = firstPath["points"] as? [String: Any],
                        let list = points["coordinates"] as? [[Double]] {
-                        coords = list.map { InlqLatLng(latitude: $0[1], longitude: $0[0]) }
+                        coords = list.map { SiroLatLng(latitude: $0[1], longitude: $0[0]) }
                     }
 
-                    var steps: [InlqRouteStep] = []
+                    var steps: [SiroRouteStep] = []
                     if let instructions = firstPath["instructions"] as? [[String: Any]] {
                         steps = instructions.map {
-                            InlqRouteStep(
+                            SiroRouteStep(
                                 instructionAr: $0["text"] as? String ?? "",
                                 distanceMeters: $0["distance"] as? Double ?? 0.0,
                                 durationSeconds: ($0["time"] as? Double ?? 0.0) / 1000.0,
@@ -90,7 +90,7 @@ public class IntaleqRoutingService {
                         }
                     }
 
-                    let route = InlqCommercialRoute(
+                    let route = SiroCommercialRoute(
                         coordinates: coords,
                         steps: steps,
                         totalDistanceMeters: distance,
@@ -103,7 +103,7 @@ public class IntaleqRoutingService {
 
                     completion(.success(route))
                 } else {
-                    completion(.failure(NSError(domain: "IntaleqMaps", code: -3, userInfo: [NSLocalizedDescriptionKey: "Malformed route response"])))
+                    completion(.failure(NSError(domain: "SiroMaps", code: -3, userInfo: [NSLocalizedDescriptionKey: "Malformed route response"])))
                 }
             } catch {
                 completion(.failure(error))

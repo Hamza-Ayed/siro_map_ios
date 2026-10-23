@@ -7,7 +7,7 @@
 [![CocoaPods](https://img.shields.io/badge/CocoaPods-Compatible-red.svg)](https://cocoapods.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Commercial 2D & 3D sovereign vector map SDK for iOS supporting 3D terrain elevation, architectural extrusions, routing, forward and reverse geocoding in Arabic and English. 100% Google Maps iOS SDK (GMS*) compatible with backward compatibility for `IntaleqMaps`.
+Commercial 2D & 3D sovereign vector map SDK for iOS supporting 3D terrain elevation, architectural extrusions, routing, forward and reverse geocoding in Arabic and English. 100% Google Maps iOS SDK (GMS*) compatible.
 
 ---
 
@@ -50,7 +50,7 @@ import SiroMap
 @main
 struct MyApp: App {
     init() {
-        SiroMap.initialize(
+        SiroMaps.initialize(
             apiKey: "YOUR_API_KEY",
             baseUrl: "https://map-saas.intaleqapp.com"
         )
@@ -127,7 +127,7 @@ class ViewController: UIViewController {
 
 ```swift
 // 1. Forward Search (البحث عن معلم)
-IntaleqGeocodingService.shared.search(query: "البتراء", limit: 5) { result in
+SiroGeocodingService.shared.search(query: "البتراء", limit: 5) { result in
     switch result {
     case .success(let places):
         if let place = places.first {
@@ -139,8 +139,8 @@ IntaleqGeocodingService.shared.search(query: "البتراء", limit: 5) { resul
 }
 
 // 2. Reverse Geocoding (تحويل الإحداثيات إلى اسم حي وشارع)
-let pos = InlqLatLng(latitude: 31.9539, longitude: 35.9106)
-IntaleqGeocodingService.shared.reverseGeocode(position: pos) { result in
+let pos = SiroLatLng(latitude: 31.9539, longitude: 35.9106)
+SiroGeocodingService.shared.reverseGeocode(position: pos) { result in
     if case .success(let place) = result, let place = place {
         print("Street: \(place.address ?? "")")
     }
@@ -150,4 +150,4 @@ IntaleqGeocodingService.shared.reverseGeocode(position: pos) { result in
 ---
 
 ## License
-MIT License. © 2026 Intaleq Platform.
+MIT License. © 2026 Siro Platform.

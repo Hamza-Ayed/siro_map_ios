@@ -1,9 +1,9 @@
 /**
- * وظيفة الملف: تنفيذ جزء IntaleqGeocodingService ضمن حزمة العميل أو التطبيق.
+ * وظيفة الملف: تنفيذ جزء SiroGeocodingService ضمن حزمة العميل أو التطبيق.
  */
 import Foundation
 
-public struct InlqGeocodingPlace: Codable {
+public struct SiroGeocodingPlace: Codable {
     public let id: String
     public let name: String
     public let nameAr: String?
@@ -12,15 +12,15 @@ public struct InlqGeocodingPlace: Codable {
     public let city: String?
     public let neighbourhood: String?
     public let address: String?
-    public let position: InlqLatLng
+    public let position: SiroLatLng
 }
 
 /**
- * Commercial Geocoding & Reverse Geocoding Service calling Intaleq SaaS API on iOS (Swift).
+ * Commercial Geocoding & Reverse Geocoding Service calling Siro SaaS API on iOS (Swift).
  */
-public class IntaleqGeocodingService {
+public class SiroGeocodingService {
 
-    public static let shared = IntaleqGeocodingService()
+    public static let shared = SiroGeocodingService()
 
     private init() {}
 
@@ -29,28 +29,28 @@ public class IntaleqGeocodingService {
      */
     public func search(
         query: String,
-        proximity: InlqLatLng? = nil,
+        proximity: SiroLatLng? = nil,
         limit: Int = 10,
-        completion: @escaping (Result<[InlqGeocodingPlace], Error>) -> Void
+        completion: @escaping (Result<[SiroGeocodingPlace], Error>) -> Void
     ) {
         guard let encoded = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            completion(.failure(NSError(domain: "IntaleqMaps", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid query"])))
+            completion(.failure(NSError(domain: "SiroMaps", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid query"])))
             return
         }
 
-        var urlStr = "\(IntaleqMaps.shared.baseUrl)/api/geocoding/search?q=\(encoded)&limit=\(limit)"
+        var urlStr = "\(SiroMaps.shared.baseUrl)/api/geocoding/search?q=\(encoded)&limit=\(limit)"
         if let proximity = proximity {
             urlStr += "&lat=\(proximity.latitude)&lng=\(proximity.longitude)"
         }
 
         guard let url = URL(string: urlStr) else {
-            completion(.failure(NSError(domain: "IntaleqMaps", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+            completion(.failure(NSError(domain: "SiroMaps", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue(IntaleqMaps.shared.apiKey, forHTTPHeaderField: "x-api-key")
+        request.setValue(SiroMaps.shared.apiKey, forHTTPHeaderField: "x-api-key")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
 
         URLSession.shared.dataTask(with: request) { data, _, error in
@@ -64,7 +64,7 @@ public class IntaleqGeocodingService {
                 return
             }
 
-            let places = IntaleqGeocodingService.parsePlaces(from: data)
+            let places = SiroGeocodingService.parsePlaces(from: data)
             completion(.success(places))
         }.resume()
     }
@@ -73,18 +73,18 @@ public class IntaleqGeocodingService {
      * Reverse geocode coordinate to get street and neighborhood name.
      */
     public func reverseGeocode(
-        position: InlqLatLng,
-        completion: @escaping (Result<InlqGeocodingPlace?, Error>) -> Void
+        position: SiroLatLng,
+        completion: @escaping (Result<SiroGeocodingPlace?, Error>) -> Void
     ) {
-        let urlStr = "\(IntaleqMaps.shared.baseUrl)/api/geocoding/reverse?lat=\(position.latitude)&lng=\(position.longitude)"
+        let urlStr = "\(SiroMaps.shared.baseUrl)/api/geocoding/reverse?lat=\(position.latitude)&lng=\(position.longitude)"
         guard let url = URL(string: urlStr) else {
-            completion(.failure(NSError(domain: "IntaleqMaps", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+            completion(.failure(NSError(domain: "SiroMaps", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue(IntaleqMaps.shared.apiKey, forHTTPHeaderField: "x-api-key")
+        request.setValue(SiroMaps.shared.apiKey, forHTTPHeaderField: "x-api-key")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
 
         URLSession.shared.dataTask(with: request) { data, _, error in
@@ -98,13 +98,13 @@ public class IntaleqGeocodingService {
                 return
             }
 
-            let places = IntaleqGeocodingService.parsePlaces(from: data)
+            let places = SiroGeocodingService.parsePlaces(from: data)
             completion(.success(places.first))
         }.resume()
     }
 
     // MARK: - Robust Response Parser
-    public static func parsePlaces(from data: Data) -> [InlqGeocodingPlace] {
+    public static func parsePlaces(from data: Data) -> [SiroGeocodingPlace] {
         guard let jsonObject = try? JSONSerialization.jsonObject(with: data) else {
             return []
         }
@@ -172,7 +172,7 @@ public class IntaleqGeocodingService {
             let neighbourhood = props["neighbourhood"] as? String ?? props["district"] as? String
             let address = (props["full_address"] as? String) ?? (props["address"] as? String) ?? (props["human_readable_address"] as? String)
 
-            return InlqGeocodingPlace(
+            return SiroGeocodingPlace(
                 id: idStr,
                 name: nameStr,
                 nameAr: nameAr,
@@ -181,7 +181,7 @@ public class IntaleqGeocodingService {
                 city: city,
                 neighbourhood: neighbourhood,
                 address: address,
-                position: InlqLatLng(latitude: latitude, longitude: longitude)
+                position: SiroLatLng(latitude: latitude, longitude: longitude)
             )
         }
     }

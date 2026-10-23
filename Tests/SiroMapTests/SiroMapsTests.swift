@@ -1,30 +1,30 @@
 import XCTest
 @testable import SiroMap
 
-final class IntaleqMapsTests: XCTestCase {
+final class SiroMapsTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        IntaleqMaps.initialize(apiKey: "in_pub_test_key_12345", baseUrl: "https://map-saas.intaleqapp.com")
+        SiroMaps.initialize(apiKey: "in_pub_test_key_12345", baseUrl: "https://map-saas.intaleqapp.com")
     }
 
     func testInitialization() {
-        XCTAssertTrue(IntaleqMaps.shared.isInitialized)
-        XCTAssertEqual(IntaleqMaps.shared.apiKey, "in_pub_test_key_12345")
-        XCTAssertEqual(IntaleqMaps.shared.baseUrl, "https://map-saas.intaleqapp.com")
+        XCTAssertTrue(SiroMaps.shared.isInitialized)
+        XCTAssertEqual(SiroMaps.shared.apiKey, "in_pub_test_key_12345")
+        XCTAssertEqual(SiroMaps.shared.baseUrl, "https://map-saas.intaleqapp.com")
     }
 
     func testStyleUrls() {
-        XCTAssertTrue(IntaleqStyles.terrain.contains("style-3d-terrain.json"))
-        XCTAssertTrue(IntaleqStyles.dark.contains("style-dark.json"))
-        XCTAssertTrue(IntaleqStyles.normal.contains("style.json"))
-        XCTAssertTrue(IntaleqStyles.satellite.contains("style-satellite.json"))
-        XCTAssertTrue(IntaleqStyles.outdoors.contains("style-tourism.json"))
+        XCTAssertTrue(SiroStyles.terrain.contains("style-3d-terrain.json"))
+        XCTAssertTrue(SiroStyles.dark.contains("style-dark.json"))
+        XCTAssertTrue(SiroStyles.normal.contains("style.json"))
+        XCTAssertTrue(SiroStyles.satellite.contains("style-satellite.json"))
+        XCTAssertTrue(SiroStyles.outdoors.contains("style-tourism.json"))
     }
 
     func testLatLngDistanceAndBearing() {
-        let amman = InlqLatLng(latitude: 31.9539, longitude: 35.9106)
-        let zarqa = InlqLatLng(latitude: 32.0608, longitude: 36.0941)
+        let amman = SiroLatLng(latitude: 31.9539, longitude: 35.9106)
+        let zarqa = SiroLatLng(latitude: 32.0608, longitude: 36.0941)
 
         let distanceMeters = amman.distance(to: zarqa)
         XCTAssertGreaterThan(distanceMeters, 15000)
@@ -51,7 +51,7 @@ final class IntaleqMapsTests: XCTestCase {
         ]
         """.data(using: .utf8)!
 
-        let places = IntaleqGeocodingService.parsePlaces(from: sampleJsonArray)
+        let places = SiroGeocodingService.parsePlaces(from: sampleJsonArray)
         XCTAssertEqual(places.count, 1)
         let place = places[0]
         XCTAssertEqual(place.id, "places_jordan_72778")
@@ -83,7 +83,7 @@ final class IntaleqMapsTests: XCTestCase {
         }
         """.data(using: .utf8)!
 
-        let places = IntaleqGeocodingService.parsePlaces(from: sampleGeoJson)
+        let places = SiroGeocodingService.parsePlaces(from: sampleGeoJson)
         XCTAssertEqual(places.count, 1)
         let place = places[0]
         XCTAssertEqual(place.name, "Petra Treasury")
@@ -92,10 +92,10 @@ final class IntaleqMapsTests: XCTestCase {
     }
 
     func testCameraPositionAndUpdates() {
-        let ctrl = IntaleqMapController()
+        let ctrl = SiroMapController()
         XCTAssertEqual(ctrl.cameraPosition.target.latitude, 31.9539, accuracy: 0.0001)
 
-        let target = InlqLatLng(latitude: 30.3222, longitude: 35.4444)
+        let target = SiroLatLng(latitude: 30.3222, longitude: 35.4444)
         ctrl.animateCamera(with: .newLatLngZoom(target, 16.0))
 
         XCTAssertEqual(ctrl.cameraPosition.target.latitude, 30.3222, accuracy: 0.0001)

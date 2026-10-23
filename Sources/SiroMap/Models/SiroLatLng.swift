@@ -1,5 +1,5 @@
 /**
- * وظيفة الملف: تنفيذ جزء InlqLatLng ضمن حزمة العميل أو التطبيق.
+ * وظيفة الملف: تنفيذ جزء SiroLatLng ضمن حزمة العميل أو التطبيق.
  */
 import Foundation
 import CoreLocation
@@ -8,7 +8,7 @@ import CoreLocation
  * An immutable struct representing a pair of latitude and longitude coordinates.
  * Fully compatible with Google Maps iOS SDK and CoreLocation coordinate signatures.
  */
-public struct InlqLatLng: Equatable, Hashable, Codable {
+public struct SiroLatLng: Equatable, Hashable, Codable {
     public let latitude: Double
     public let longitude: Double
 
@@ -25,15 +25,15 @@ public struct InlqLatLng: Equatable, Hashable, Codable {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 
-    /// Calculates spherical distance in meters to another InlqLatLng
-    public func distance(to other: InlqLatLng) -> Double {
+    /// Calculates spherical distance in meters to another SiroLatLng
+    public func distance(to other: SiroLatLng) -> Double {
         let loc1 = CLLocation(latitude: self.latitude, longitude: self.longitude)
         let loc2 = CLLocation(latitude: other.latitude, longitude: other.longitude)
         return loc1.distance(from: loc2)
     }
 
-    /// Calculates initial bearing in degrees to another InlqLatLng
-    public func bearing(to other: InlqLatLng) -> Double {
+    /// Calculates initial bearing in degrees to another SiroLatLng
+    public func bearing(to other: SiroLatLng) -> Double {
         let lat1 = self.latitude * .pi / 180.0
         let lon1 = self.longitude * .pi / 180.0
         let lat2 = other.latitude * .pi / 180.0

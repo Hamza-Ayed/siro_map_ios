@@ -1,39 +1,39 @@
 /**
- * وظيفة الملف: تنفيذ جزء InlqGeometry ضمن حزمة العميل أو التطبيق.
+ * وظيفة الملف: تنفيذ جزء SiroGeometry ضمن حزمة العميل أو التطبيق.
  */
 import Foundation
 import CoreLocation
 
 #if canImport(UIKit)
 import UIKit
-public typealias InlqColor = UIColor
-public typealias InlqImage = UIImage
+public typealias SiroColor = UIColor
+public typealias SiroImage = UIImage
 #elseif canImport(AppKit)
 import AppKit
-public typealias InlqColor = NSColor
-public typealias InlqImage = NSImage
+public typealias SiroColor = NSColor
+public typealias SiroImage = NSImage
 #endif
 
 // ─────────────────────────────────────────────────────────────
 // ID Types (Matching Flutter SDK & Google Maps iOS SDK)
 // ─────────────────────────────────────────────────────────────
 
-public struct InlqMarkerId: Hashable, Equatable, Codable {
+public struct SiroMarkerId: Hashable, Equatable, Codable {
     public let value: String
     public init(_ value: String) { self.value = value }
 }
 
-public struct InlqPolylineId: Hashable, Equatable, Codable {
+public struct SiroPolylineId: Hashable, Equatable, Codable {
     public let value: String
     public init(_ value: String) { self.value = value }
 }
 
-public struct InlqPolygonId: Hashable, Equatable, Codable {
+public struct SiroPolygonId: Hashable, Equatable, Codable {
     public let value: String
     public init(_ value: String) { self.value = value }
 }
 
-public struct InlqCircleId: Hashable, Equatable, Codable {
+public struct SiroCircleId: Hashable, Equatable, Codable {
     public let value: String
     public init(_ value: String) { self.value = value }
 }
@@ -41,16 +41,16 @@ public struct InlqCircleId: Hashable, Equatable, Codable {
 /**
  * An immutable struct representing a latitude/longitude bounding box.
  */
-public struct InlqLatLngBounds: Equatable, Codable {
-    public let southwest: InlqLatLng
-    public let northeast: InlqLatLng
+public struct SiroLatLngBounds: Equatable, Codable {
+    public let southwest: SiroLatLng
+    public let northeast: SiroLatLng
 
-    public init(southwest: InlqLatLng, northeast: InlqLatLng) {
+    public init(southwest: SiroLatLng, northeast: SiroLatLng) {
         self.southwest = southwest
         self.northeast = northeast
     }
 
-    public func contains(_ point: InlqLatLng) -> Bool {
+    public func contains(_ point: SiroLatLng) -> Bool {
         let inLat = point.latitude >= southwest.latitude && point.latitude <= northeast.latitude
         let inLng = point.longitude >= southwest.longitude && point.longitude <= northeast.longitude
         return inLat && inLng
@@ -61,11 +61,11 @@ public struct InlqLatLngBounds: Equatable, Codable {
 // Bitmap & InfoWindow Types
 // ─────────────────────────────────────────────────────────────
 
-public class InlqBitmap {
+public class SiroBitmap {
     public enum BitmapType {
         case defaultMarker
         case defaultMarkerWithHue(CGFloat)
-        case image(InlqImage)
+        case image(SiroImage)
         case asset(String)
     }
 
@@ -75,22 +75,22 @@ public class InlqBitmap {
         self.type = type
     }
 
-    public static let defaultMarker = InlqBitmap(type: .defaultMarker)
+    public static let defaultMarker = SiroBitmap(type: .defaultMarker)
 
-    public static func defaultMarker(withHue hue: CGFloat) -> InlqBitmap {
-        return InlqBitmap(type: .defaultMarkerWithHue(hue))
+    public static func defaultMarker(withHue hue: CGFloat) -> SiroBitmap {
+        return SiroBitmap(type: .defaultMarkerWithHue(hue))
     }
 
-    public static func from(image: InlqImage) -> InlqBitmap {
-        return InlqBitmap(type: .image(image))
+    public static func from(image: SiroImage) -> SiroBitmap {
+        return SiroBitmap(type: .image(image))
     }
 
-    public static func from(assetName: String) -> InlqBitmap {
-        return InlqBitmap(type: .asset(assetName))
+    public static func from(assetName: String) -> SiroBitmap {
+        return SiroBitmap(type: .asset(assetName))
     }
 }
 
-public struct InlqInfoWindow {
+public struct SiroInfoWindow {
     public let title: String?
     public let snippet: String?
     public let anchor: CGPoint
@@ -103,36 +103,36 @@ public struct InlqInfoWindow {
         self.onTap = onTap
     }
 
-    public static let noText = InlqInfoWindow()
+    public static let noText = SiroInfoWindow()
 }
 
 // ─────────────────────────────────────────────────────────────
 // Map Overlay Elements (Matching Flutter SDK)
 // ─────────────────────────────────────────────────────────────
 
-public class InlqMarker {
-    public let markerId: InlqMarkerId
-    public var position: InlqLatLng
+public class SiroMarker {
+    public let markerId: SiroMarkerId
+    public var position: SiroLatLng
     public var alpha: CGFloat
     public var anchor: CGPoint
     public var isDraggable: Bool
     public var isFlat: Bool
-    public var icon: InlqBitmap
-    public var infoWindow: InlqInfoWindow
+    public var icon: SiroBitmap
+    public var infoWindow: SiroInfoWindow
     public var rotation: Double
     public var isVisible: Bool
     public var zIndex: Int32
     public var onTap: (() -> Void)?
 
     public init(
-        markerId: InlqMarkerId,
-        position: InlqLatLng,
+        markerId: SiroMarkerId,
+        position: SiroLatLng,
         alpha: CGFloat = 1.0,
         anchor: CGPoint = CGPoint(x: 0.5, y: 1.0),
         isDraggable: Bool = false,
         isFlat: Bool = false,
-        icon: InlqBitmap = .defaultMarker,
-        infoWindow: InlqInfoWindow = .noText,
+        icon: SiroBitmap = .defaultMarker,
+        infoWindow: SiroInfoWindow = .noText,
         rotation: Double = 0.0,
         isVisible: Bool = true,
         zIndex: Int32 = 0,
@@ -153,10 +153,10 @@ public class InlqMarker {
     }
 }
 
-public class InlqPolyline {
-    public let polylineId: InlqPolylineId
-    public var points: [InlqLatLng]
-    public var strokeColor: InlqColor
+public class SiroPolyline {
+    public let polylineId: SiroPolylineId
+    public var points: [SiroLatLng]
+    public var strokeColor: SiroColor
     public var strokeWidth: CGFloat
     public var isGeodesic: Bool
     public var isVisible: Bool
@@ -164,9 +164,9 @@ public class InlqPolyline {
     public var onTap: (() -> Void)?
 
     public init(
-        polylineId: InlqPolylineId,
-        points: [InlqLatLng] = [],
-        strokeColor: InlqColor = InlqColor(red: 0.0, green: 0.44, blue: 0.89, alpha: 1.0),
+        polylineId: SiroPolylineId,
+        points: [SiroLatLng] = [],
+        strokeColor: SiroColor = SiroColor(red: 0.0, green: 0.44, blue: 0.89, alpha: 1.0),
         strokeWidth: CGFloat = 10.0,
         isGeodesic: Bool = true,
         isVisible: Bool = true,
@@ -184,24 +184,24 @@ public class InlqPolyline {
     }
 }
 
-public class InlqPolygon {
-    public let polygonId: InlqPolygonId
-    public var points: [InlqLatLng]
-    public var holes: [[InlqLatLng]]
-    public var strokeColor: InlqColor
+public class SiroPolygon {
+    public let polygonId: SiroPolygonId
+    public var points: [SiroLatLng]
+    public var holes: [[SiroLatLng]]
+    public var strokeColor: SiroColor
     public var strokeWidth: CGFloat
-    public var fillColor: InlqColor
+    public var fillColor: SiroColor
     public var isVisible: Bool
     public var zIndex: Int32
     public var onTap: (() -> Void)?
 
     public init(
-        polygonId: InlqPolygonId,
-        points: [InlqLatLng] = [],
-        holes: [[InlqLatLng]] = [],
-        strokeColor: InlqColor = InlqColor(red: 0.0, green: 0.44, blue: 0.89, alpha: 1.0),
+        polygonId: SiroPolygonId,
+        points: [SiroLatLng] = [],
+        holes: [[SiroLatLng]] = [],
+        strokeColor: SiroColor = SiroColor(red: 0.0, green: 0.44, blue: 0.89, alpha: 1.0),
         strokeWidth: CGFloat = 5.0,
-        fillColor: InlqColor = InlqColor(red: 0.0, green: 0.44, blue: 0.89, alpha: 0.2),
+        fillColor: SiroColor = SiroColor(red: 0.0, green: 0.44, blue: 0.89, alpha: 0.2),
         isVisible: Bool = true,
         zIndex: Int32 = 0,
         onTap: (() -> Void)? = nil
@@ -218,24 +218,24 @@ public class InlqPolygon {
     }
 }
 
-public class InlqCircle {
-    public let circleId: InlqCircleId
-    public var center: InlqLatLng
+public class SiroCircle {
+    public let circleId: SiroCircleId
+    public var center: SiroLatLng
     public var radiusMeters: Double
-    public var strokeColor: InlqColor
+    public var strokeColor: SiroColor
     public var strokeWidth: CGFloat
-    public var fillColor: InlqColor
+    public var fillColor: SiroColor
     public var isVisible: Bool
     public var zIndex: Int32
     public var onTap: (() -> Void)?
 
     public init(
-        circleId: InlqCircleId,
-        center: InlqLatLng,
+        circleId: SiroCircleId,
+        center: SiroLatLng,
         radiusMeters: Double,
-        strokeColor: InlqColor = InlqColor(red: 0.13, green: 0.77, blue: 0.36, alpha: 1.0),
+        strokeColor: SiroColor = SiroColor(red: 0.13, green: 0.77, blue: 0.36, alpha: 1.0),
         strokeWidth: CGFloat = 4.0,
-        fillColor: InlqColor = InlqColor(red: 0.13, green: 0.77, blue: 0.36, alpha: 0.2),
+        fillColor: SiroColor = SiroColor(red: 0.13, green: 0.77, blue: 0.36, alpha: 0.2),
         isVisible: Bool = true,
         zIndex: Int32 = 0,
         onTap: (() -> Void)? = nil
