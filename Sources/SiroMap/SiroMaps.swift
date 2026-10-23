@@ -24,13 +24,8 @@ public class SiroMaps {
         shared.apiKey = apiKey
         shared.baseUrl = baseUrl.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
         shared.isInitialized = true
-
-        #if canImport(UIKit)
-        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
-        #else
-        let deviceId = UUID().uuidString
-        #endif
-        SiroTelemetryService.shared.startTracking(driverId: deviceId)
+        // التتبع لا يبدأ هنا: التطبيق المضيف يستدعي SiroTelemetryService.shared.startTracking
+        // بعد الإفصاح وأخذ الموافقة من المستخدم.
     }
 }
 

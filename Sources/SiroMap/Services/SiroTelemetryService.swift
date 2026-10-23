@@ -13,6 +13,8 @@ public struct SiroTelemetryPoint: Codable {
     public let elevation: Double
     public let distance: Double
     public let timestamp: String
+    /// الوقت كـ Date للمقارنات الداخلية؛ لا يدخل في الترميز.
+    internal var date: Date = .distantPast
 
     enum CodingKeys: String, CodingKey {
         case driverId = "driver_id"
@@ -40,73 +42,150 @@ public struct SiroTelemetryPoint: Codable {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         self.timestamp = formatter.string(from: timestamp)
+        self.date = timestamp
     }
 }
 
 /**
- * Commercial Telemetry & Periodic Sync Engine for iOS Swift SDK.
- * 1. Samples GPS location every 3 seconds with a stationary filter to protect battery.
- * 2. Batches and flushes points to MapSaaS backend every 2 minutes (or 40 points).
- * 3. Offline buffer retains up to 400 points when disconnected (~20 minutes offline).
+ * Telemetry & periodic sync engine for the iOS SDK.
+ * 1. Samples GPS while moving (every 3 seconds). While stationary, records one heartbeat every 30 seconds,
+ *    driven by an internal timer so it does not depend on new location updates.
+ * 2. Batches and uploads points every 2 minutes, or sooner at 40 points.
+ * 3. Keeps up to 400 points in memory while offline.
+ * Collection is off until the host app starts tracking with `consentGranted: true`.
  */
 public class SiroTelemetryService {
 
     public static let shared = SiroTelemetryService()
 
     public static let samplingIntervalSeconds: TimeInterval = 3
+    public static let heartbeatIntervalSeconds: TimeInterval = 30
     public static let defaultUploadIntervalSeconds: TimeInterval = 120 // دقيقتان
     public static let maxBatchSize: Int = 40 // 40 نقطة * 3 ثوان = 120 ثانية
     public static let maxBufferSize: Int = 400 // حفظ حتى 400 نقطة دون اتصال
+    public static let stationarySpeedKmH: Double = 1.0
+    public static let stationaryDistanceMeters: Double = 3.0
 
-    private var defaultDriverId: String = "anonymous_driver"
+    private static let installIdKey = "siro_maps_telemetry_install_id"
+
+    /// يولّد معرّف تثبيت عشوائياً بصيغة UUID v4، لا يُشتق من أي بيانات عن الجهاز أو المستخدم.
+    public static func generateInstallId() -> String {
+        return UUID().uuidString
+    }
+
+    /**
+     * يرجع معرّف التثبيت المحفوظ، أو يولّد واحداً جديداً عند أول تشغيل.
+     * يُحفظ في UserDefaults، فيُمسح مع بيانات التطبيق عند الحذف.
+     */
+    public static func loadOrCreateInstallId(defaults: UserDefaults = .standard) -> String {
+        if let saved = defaults.string(forKey: installIdKey), !saved.isEmpty {
+            return saved
+        }
+        let id = generateInstallId()
+        defaults.set(id, forKey: installIdKey)
+        return id
+    }
+
+    private var installId: String = ""
+    private var enabled: Bool = false
     private var buffer: [SiroTelemetryPoint] = []
     private var lastSampleDate: Date?
     private var lastRecordedPoint: SiroTelemetryPoint?
+    private var lastObservedPoint: SiroTelemetryPoint?
+    private var stationary: Bool = false
     private var flushTimer: Timer?
+    private var heartbeatTimer: Timer?
     private var isFlushing = false
 
     private let syncQueue = DispatchQueue(label: "com.siro.maps.telemetry.queue")
+
+    /// يُستدعى عند كل تغيّر في حالة الوقوف (true = واقف).
+    public var onStationaryChanged: ((Bool) -> Void)?
 
     public var bufferedPointCount: Int {
         return syncQueue.sync { buffer.count }
     }
 
+    /// هل التطبيق المضيف فعّل جمع التتبع بعد الموافقة.
+    public var isEnabled: Bool {
+        return syncQueue.sync { enabled }
+    }
+
+    /// هل الجهاز واقف حالياً.
+    public var isStationary: Bool {
+        return syncQueue.sync { stationary }
+    }
+
     private init() {}
 
     /**
-     * Initializes periodic flush timer for an active navigation/tracking session.
+     * يبدأ جلسة التتبع الدورية، عادةً عند بدء الملاحة.
+     * إذا كانت `consentGranted` = false لا يُسجَّل أي شيء.
      */
     public func startTracking(
-        driverId: String,
+        installId: String,
+        consentGranted: Bool,
         uploadIntervalSeconds: TimeInterval = defaultUploadIntervalSeconds
     ) {
-        syncQueue.async { [weak self] in
-            guard let self = self else { return }
-            self.defaultDriverId = driverId
+        syncQueue.sync {
+            self.installId = installId
+        }
+        setEnabled(consentGranted)
 
-            DispatchQueue.main.async {
-                self.flushTimer?.invalidate()
-                self.flushTimer = Timer.scheduledTimer(withTimeInterval: uploadIntervalSeconds, repeats: true) { [weak self] _ in
-                    self?.flush()
-                }
+        DispatchQueue.main.async { [weak self] in
+            self?.flushTimer?.invalidate()
+            self?.heartbeatTimer?.invalidate()
+            self?.flushTimer = nil
+            self?.heartbeatTimer = nil
+            guard consentGranted else { return }
+
+            self?.flushTimer = Timer.scheduledTimer(withTimeInterval: uploadIntervalSeconds, repeats: true) { [weak self] _ in
+                self?.flush()
+            }
+            self?.heartbeatTimer = Timer.scheduledTimer(withTimeInterval: Self.heartbeatIntervalSeconds, repeats: true) { [weak self] _ in
+                self?.recordHeartbeat()
             }
         }
     }
 
     /**
-     * Stops tracking timer and flushes any pending points.
+     * يوقف المؤقتات ويرفع ما تبقى من النقاط.
      */
     public func stopTracking(completion: ((Bool) -> Void)? = nil) {
         DispatchQueue.main.async { [weak self] in
             self?.flushTimer?.invalidate()
             self?.flushTimer = nil
+            self?.heartbeatTimer?.invalidate()
+            self?.heartbeatTimer = nil
             self?.flush(completion: completion)
         }
     }
 
     /**
-     * Records a new GPS position snapshot every 3 seconds.
-     * Applies stationary filtering when vehicle is parked (<1 km/h) to minimize bandwidth.
+     * يفعّل أو يوقف الجمع. عند الإيقاف تُحذف النقاط غير المرسلة ولا يُسجَّل شيء بعدها.
+     */
+    public func setEnabled(_ value: Bool) {
+        var changed = false
+        syncQueue.sync {
+            enabled = value
+            if !value {
+                buffer.removeAll()
+                lastSampleDate = nil
+                lastRecordedPoint = nil
+                lastObservedPoint = nil
+                if stationary {
+                    stationary = false
+                    changed = true
+                }
+            }
+        }
+        if changed {
+            notifyStationary(false)
+        }
+    }
+
+    /**
+     * يسجّل موقعاً جديداً. عند الحركة كل 3 ثوانٍ، وعند الوقوف نبضة كل 30 ثانية.
      */
     @discardableResult
     public func recordPosition(
@@ -119,30 +198,12 @@ public class SiroTelemetryService {
         customDriverId: String? = nil,
         now: Date = Date()
     ) -> Bool {
-        return syncQueue.sync {
-            // 1. Throttle: Must be at least 3 seconds since last sample
-            if let lastTime = lastSampleDate {
-                let elapsed = now.timeIntervalSince(lastTime)
-                if elapsed < Self.samplingIntervalSeconds {
-                    return false
-                }
-            }
+        var stationaryChange: Bool?
+        let recorded: Bool = syncQueue.sync { () -> Bool in
+            guard enabled else { return false }
 
-            // 2. Smart stationary filter:
-            // If speed < 1 km/h and vehicle moved < 3 meters, only record a heartbeat every 30 seconds
-            if let last = lastRecordedPoint {
-                let isNearZero = speedKmH < 1.0
-                let dist = calculateDistanceMeters(lat1: last.latitude, lon1: last.longitude, lat2: latitude, lon2: longitude)
-                if isNearZero && dist < 3.0 {
-                    if let lastDate = lastSampleDate, now.timeIntervalSince(lastDate) < 30.0 {
-                        return false
-                    }
-                }
-            }
-
-            let driverId = customDriverId ?? defaultDriverId
-            let point = SiroTelemetryPoint(
-                driverId: driverId,
+            let observed = SiroTelemetryPoint(
+                driverId: customDriverId ?? installId,
                 latitude: latitude,
                 longitude: longitude,
                 speed: speedKmH,
@@ -151,23 +212,93 @@ public class SiroTelemetryService {
                 distance: remainingDistance,
                 timestamp: now
             )
+            lastObservedPoint = observed
 
-            if buffer.count >= Self.maxBufferSize {
-                buffer.removeFirst()
-            }
-            buffer.append(point)
-
-            lastSampleDate = now
-            lastRecordedPoint = point
-
-            // 3. Proactive flush if batch threshold reached
-            if buffer.count >= Self.maxBatchSize {
-                DispatchQueue.global(qos: .utility).async { [weak self] in
-                    self?.flush()
-                }
+            // 1. Throttle: at least 3 seconds since the last recorded sample
+            if let lastTime = lastSampleDate, now.timeIntervalSince(lastTime) < Self.samplingIntervalSeconds {
+                return false
             }
 
+            // 2. Stationary filter: while stationary, record a point only every 30 seconds
+            let isStationaryNow = isStationaryAt(observed)
+            if isStationaryNow != stationary {
+                stationary = isStationaryNow
+                stationaryChange = isStationaryNow
+            }
+            if isStationaryNow, let last = lastRecordedPoint,
+               now.timeIntervalSince(last.date) < Self.heartbeatIntervalSeconds {
+                return false
+            }
+
+            appendPoint(observed, at: now)
             return true
+        }
+
+        if let change = stationaryChange {
+            notifyStationary(change)
+        }
+        return recorded
+    }
+
+    /**
+     * نبضة ثابتة عند الوقوف: تُسجَّل كل 30 ثانية حتى دون وصول موقع جديد.
+     * يستدعيها المؤقت داخلياً أثناء التتبع.
+     */
+    @discardableResult
+    public func recordHeartbeat(now: Date = Date()) -> Bool {
+        return syncQueue.sync { () -> Bool in
+            guard enabled, stationary,
+                  let last = lastObservedPoint,
+                  let recorded = lastRecordedPoint,
+                  now.timeIntervalSince(recorded.date) >= Self.heartbeatIntervalSeconds else {
+                return false
+            }
+            let beat = SiroTelemetryPoint(
+                driverId: last.driverId,
+                latitude: last.latitude,
+                longitude: last.longitude,
+                speed: last.speed,
+                heading: last.heading,
+                elevation: last.elevation,
+                distance: last.distance,
+                timestamp: now
+            )
+            appendPoint(beat, at: now)
+            return true
+        }
+    }
+
+    internal func setInstallId(_ value: String) {
+        syncQueue.sync { installId = value }
+    }
+
+    /// يجب استدعاؤها داخل syncQueue.
+    private func isStationaryAt(_ observed: SiroTelemetryPoint) -> Bool {
+        guard let last = lastRecordedPoint, observed.speed < Self.stationarySpeedKmH else { return false }
+        let dist = calculateDistanceMeters(lat1: last.latitude, lon1: last.longitude, lat2: observed.latitude, lon2: observed.longitude)
+        return dist < Self.stationaryDistanceMeters
+    }
+
+    /// يجب استدعاؤها داخل syncQueue.
+    private func appendPoint(_ point: SiroTelemetryPoint, at date: Date) {
+        if buffer.count >= Self.maxBufferSize {
+            buffer.removeFirst()
+        }
+        buffer.append(point)
+        lastSampleDate = date
+        lastRecordedPoint = point
+
+        // 3. Proactive flush when reaching the batch size
+        if buffer.count >= Self.maxBatchSize {
+            DispatchQueue.global(qos: .utility).async { [weak self] in
+                self?.flush()
+            }
+        }
+    }
+
+    private func notifyStationary(_ value: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            self?.onStationaryChanged?(value)
         }
     }
 
