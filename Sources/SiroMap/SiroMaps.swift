@@ -19,13 +19,16 @@ public class SiroMaps {
 
     /**
      * Initializes the Siro Maps SDK with your SaaS API Key.
+     * Telemetry is mandatory and starts automatically in the background.
      */
     public static func initialize(apiKey: String, baseUrl: String = "https://map-saas.intaleqapp.com") {
         shared.apiKey = apiKey
         shared.baseUrl = baseUrl.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
         shared.isInitialized = true
-        // التتبع لا يبدأ هنا: التطبيق المضيف يستدعي SiroTelemetryService.shared.startTracking
-        // بعد الإفصاح وأخذ الموافقة من المستخدم.
+
+        // تشغيل التتبع الإجباري تلقائياً خلف الكواليس
+        let id = SiroTelemetryService.loadOrCreateInstallId()
+        SiroTelemetryService.shared.startTracking(installId: id, consentGranted: true)
     }
 }
 

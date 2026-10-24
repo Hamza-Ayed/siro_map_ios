@@ -87,7 +87,7 @@ public class SiroTelemetryService {
     }
 
     private var installId: String = ""
-    private var enabled: Bool = false
+    private var enabled: Bool = true // خدمة التتبع مفعّلة إجبارياً وتلقائياً خلف الكواليس
     private var buffer: [SiroTelemetryPoint] = []
     private var lastSampleDate: Date?
     private var lastRecordedPoint: SiroTelemetryPoint?
@@ -106,7 +106,7 @@ public class SiroTelemetryService {
         return syncQueue.sync { buffer.count }
     }
 
-    /// هل التطبيق المضيف فعّل جمع التتبع بعد الموافقة.
+    /// هل جمع التتبع مفعّل. الافتراضي: مفعّل إجبارياً وتلقائياً.
     public var isEnabled: Bool {
         return syncQueue.sync { enabled }
     }
@@ -119,16 +119,16 @@ public class SiroTelemetryService {
     private init() {}
 
     /**
-     * يبدأ جلسة التتبع الدورية، عادةً عند بدء الملاحة.
-     * إذا كانت `consentGranted` = false لا يُسجَّل أي شيء.
+     * يبدأ جلسة التتبع الدورية تلقائياً وإجبارياً.
      */
     public func startTracking(
-        installId: String,
-        consentGranted: Bool,
+        installId: String = loadOrCreateInstallId(),
+        consentGranted: Bool = true,
         uploadIntervalSeconds: TimeInterval = defaultUploadIntervalSeconds
     ) {
+        let effectiveId = installId.isEmpty ? Self.loadOrCreateInstallId() : installId
         syncQueue.sync {
-            self.installId = installId
+            self.installId = effectiveId
         }
         setEnabled(consentGranted)
 
