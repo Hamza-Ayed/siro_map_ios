@@ -2,7 +2,7 @@
 ### خريطة سيرو لنظام آي أو إس (سويفت)
 
 [![Swift](https://img.shields.io/badge/Swift-5.9%2B-orange.svg)](https://swift.org)
-[![iOS](https://img.shields.io/badge/iOS-14.0%2B-blue.svg)](https://apple.com)
+[![iOS](https://img.shields.io/badge/iOS-15.0%2B-blue.svg)](https://apple.com)
 [![SPM](https://img.shields.io/badge/Swift%20Package%20Manager-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
 [![CocoaPods](https://img.shields.io/badge/CocoaPods-Compatible-red.svg)](https://cocoapods.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)

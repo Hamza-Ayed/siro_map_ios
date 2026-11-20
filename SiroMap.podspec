@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.author           = { 'Hamza Ayed' => 'hamzaayedflutter@gmail.com' }
   s.source           = { :git => 'https://github.com/Hamza-Ayed/siro_map_ios.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '14.0'
+  s.ios.deployment_target = '15.0'
   s.swift_version    = '5.9'
 
   s.source_files = 'Sources/SiroMap/**/*.swift'
