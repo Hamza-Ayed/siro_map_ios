@@ -25,11 +25,20 @@ public class SiroGeocodingService {
     private init() {}
 
     /**
-     * Search for places, addresses, and POIs by text query.
+     * Search for places, addresses, and POIs by text query with Google-compatible filters.
+     * - Parameter query: Query string (e.g. "مطار الملك خالد").
+     * - Parameter country: Optional country code filter (e.g. "SA", "JO", "EG", "SY").
+     * - Parameter proximity: Optional coordinate center for nearby ranking.
+     * - Parameter radius: Search radius in meters around proximity.
+     * - Parameter language: Preferred language ("ar" or "en").
+     * - Parameter limit: Results limit (1 to 10, strictly capped at 10 to resist scraping).
      */
     public func search(
         query: String,
+        country: String? = nil,
         proximity: SiroLatLng? = nil,
+        radius: Int? = nil,
+        language: String? = nil,
         limit: Int = 10,
         completion: @escaping (Result<[SiroGeocodingPlace], Error>) -> Void
     ) {
@@ -38,9 +47,25 @@ public class SiroGeocodingService {
             return
         }
 
-        var urlStr = "\(SiroMaps.shared.baseUrl)/api/geocoding/search?q=\(encoded)&limit=\(limit)"
+        let clampedLimit = min(max(limit, 1), 10)
+        var urlStr = "\(SiroMaps.shared.baseUrl)/api/geocoding/search?q=\(encoded)&input=\(encoded)&limit=\(clampedLimit)"
+
+        if let country = country, !country.isEmpty,
+           let encCountry = country.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            urlStr += "&country=\(encCountry)&components=country:\(country.lowercased())"
+        }
+
         if let proximity = proximity {
-            urlStr += "&lat=\(proximity.latitude)&lng=\(proximity.longitude)"
+            urlStr += "&lat=\(proximity.latitude)&lng=\(proximity.longitude)&location=\(proximity.latitude),\(proximity.longitude)"
+        }
+
+        if let radius = radius, radius > 0 {
+            urlStr += "&radius=\(radius)"
+        }
+
+        if let language = language, !language.isEmpty,
+           let encLang = language.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            urlStr += "&language=\(encLang)"
         }
 
         guard let url = URL(string: urlStr) else {

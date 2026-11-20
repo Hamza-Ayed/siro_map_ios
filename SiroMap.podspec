@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SiroMap'
-  s.version          = '1.0.0'
+  s.version          = '1.2.0'
   s.summary          = 'Commercial Maps SDK for iOS (Swift) by Siro Platform.'
   s.description      = <<-DESC
     High-performance commercial map SDK for iOS offering high-resolution 2D vector maps,
@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '14.0'
   s.swift_version    = '5.9'
 
-  s.source_files = 'Sources/SiroMap/**/*'
-  s.frameworks   = 'WebKit', 'CoreLocation', 'SwiftUI'
+  s.source_files = 'Sources/SiroMap/**/*.swift'
+  s.resource_bundles = { 'SiroMapAudio' => ['Sources/SiroMap/Resources/audio'] }
+  s.frameworks   = 'WebKit', 'CoreLocation', 'SwiftUI', 'AVFoundation'
 end

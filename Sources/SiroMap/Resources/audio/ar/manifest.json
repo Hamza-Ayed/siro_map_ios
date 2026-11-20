@@ -1,0 +1,1495 @@
+{
+  "version": "1.0.0",
+  "language": "ar",
+  "voice_name": "Ahmed",
+  "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "diacritized": true,
+  "generated_at": 1793644877,
+  "prompts": {
+    "turn_right_now": {
+      "file": "turn_right_now.mp3",
+      "text": "انْعَطِفْ يَمِينًا الآن",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "turn_left_now": {
+      "file": "turn_left_now.mp3",
+      "text": "انْعَطِفْ يَسَارًا الآن",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "slight_right_now": {
+      "file": "slight_right_now.mp3",
+      "text": "انْحَرِفْ قَلِيلًا إِلَى الْيَمِين",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "slight_left_now": {
+      "file": "slight_left_now.mp3",
+      "text": "انْحَرِفْ قَلِيلًا إِلَى الْيَسَار",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "sharp_right_now": {
+      "file": "sharp_right_now.mp3",
+      "text": "انْعَطِفْ حَادًّا إِلَى الْيَمِين",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "sharp_left_now": {
+      "file": "sharp_left_now.mp3",
+      "text": "انْعَطِفْ حَادًّا إِلَى الْيَسَار",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "enter_roundabout_now": {
+      "file": "enter_roundabout_now.mp3",
+      "text": "ادْخُلِ الدَّوَّارَ الآن",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "take_exit_now": {
+      "file": "take_exit_now.mp3",
+      "text": "اسْلُكِ الْمَخْرَجَ الآن",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "u_turn_now": {
+      "file": "u_turn_now.mp3",
+      "text": "قُمْ بِالدَّوَرَانِ لِلْخَلْف",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "arrived": {
+      "file": "arrived.mp3",
+      "text": "لَقَدْ وَصَلْتَ إِلَى وُجْهَتِك",
+      "category": "lifecycle",
+      "priority": 0
+    },
+    "camera_ahead": {
+      "file": "camera_ahead.mp3",
+      "text": "انْتَبِهْ، كَامِيرَا مُرَاقَبَةِ سُرْعَةٍ أَمَامَك",
+      "category": "safety",
+      "priority": 1
+    },
+    "speed_warning": {
+      "file": "speed_warning.mp3",
+      "text": "يُرْجَى تَخْفِيفُ السُّرْعَة، لَقَدْ تَجَاوَزْتَ السُّرْعَةَ الْمُحَدَّدَة",
+      "category": "safety",
+      "priority": 1
+    },
+    "camera_speed_60": {
+      "file": "camera_speed_60.mp3",
+      "text": "انْتَبِهْ، كَامِيرَا سُرْعَة، السَّرْعَةُ الْمُحَدَّدَةُ سِتُّونَ كِيلُومِتْرًا فِي السَّاعَة",
+      "category": "safety",
+      "priority": 1
+    },
+    "camera_speed_80": {
+      "file": "camera_speed_80.mp3",
+      "text": "انْتَبِهْ، كَامِيرَا سُرْعَة، السَّرْعَةُ الْمُحَدَّدَةُ ثَمَانُونَ كِيلُومِتْرًا فِي السَّاعَة",
+      "category": "safety",
+      "priority": 1
+    },
+    "camera_speed_90": {
+      "file": "camera_speed_90.mp3",
+      "text": "انْتَبِهْ، كَامِيرَا سُرْعَة، السَّرْعَةُ الْمُحَدَّدَةُ تِسْعُونَ كِيلُومِتْرًا فِي السَّاعَة",
+      "category": "safety",
+      "priority": 1
+    },
+    "camera_speed_100": {
+      "file": "camera_speed_100.mp3",
+      "text": "انْتَبِهْ، كَامِيرَا سُرْعَة، السَّرْعَةُ الْمُحَدَّدَةُ مِئَةُ كِيلُومِتْرٍ فِي السَّاعَة",
+      "category": "safety",
+      "priority": 1
+    },
+    "camera_speed_120": {
+      "file": "camera_speed_120.mp3",
+      "text": "انْتَبِهْ، كَامِيرَا سُرْعَة، السَّرْعَةُ الْمُحَدَّدَةُ مِئَةٌ وَعِشْرُونَ كِيلُومِتْرًا فِي السَّاعَة",
+      "category": "safety",
+      "priority": 1
+    },
+    "after_100m_turn_right": {
+      "file": "after_100m_turn_right.mp3",
+      "text": "بَعْدَ مِئَةِ مِتْرٍ، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_100m_turn_left": {
+      "file": "after_100m_turn_left.mp3",
+      "text": "بَعْدَ مِئَةِ مِتْرٍ، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_100m_u_turn": {
+      "file": "after_100m_u_turn.mp3",
+      "text": "بَعْدَ مِئَةِ مِتْرٍ، قُمْ بِالدَّوَرَانِ لِلْخَلْف",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_150m_turn_right": {
+      "file": "after_150m_turn_right.mp3",
+      "text": "بَعْدَ مِئَةٍ وَخَمْسِينَ مِتْرًا، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_150m_turn_left": {
+      "file": "after_150m_turn_left.mp3",
+      "text": "بَعْدَ مِئَةٍ وَخَمْسِينَ مِتْرًا، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_200m_turn_right": {
+      "file": "after_200m_turn_right.mp3",
+      "text": "بَعْدَ مِئَتَيْ مِتْرٍ، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_200m_turn_left": {
+      "file": "after_200m_turn_left.mp3",
+      "text": "بَعْدَ مِئَتَيْ مِتْرٍ، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_300m_turn_right": {
+      "file": "after_300m_turn_right.mp3",
+      "text": "بَعْدَ ثَلَاثِمِئَةِ مِتْرٍ، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_300m_turn_left": {
+      "file": "after_300m_turn_left.mp3",
+      "text": "بَعْدَ ثَلَاثِمِئَةِ مِتْرٍ، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_300m_roundabout": {
+      "file": "after_300m_roundabout.mp3",
+      "text": "بَعْدَ ثَلَاثِمِئَةِ مِتْرٍ، ادْخُلِ الدَّوَّار",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_500m_turn_right": {
+      "file": "after_500m_turn_right.mp3",
+      "text": "بَعْدَ خَمْسِمِئَةِ مِتْرٍ، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_500m_turn_left": {
+      "file": "after_500m_turn_left.mp3",
+      "text": "بَعْدَ خَمْسِمِئَةِ مِتْرٍ، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_500m_roundabout": {
+      "file": "after_500m_roundabout.mp3",
+      "text": "بَعْدَ خَمْسِمِئَةِ مِتْرٍ، ادْخُلِ الدَّوَّار",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_500m_exit": {
+      "file": "after_500m_exit.mp3",
+      "text": "بَعْدَ خَمْسِمِئَةِ مِتْرٍ، اسْلُكِ الْمَخْرَج",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_1km_turn_right": {
+      "file": "after_1km_turn_right.mp3",
+      "text": "بَعْدَ كِيلُومِتْرٍ وَاحِدٍ، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_1km_turn_left": {
+      "file": "after_1km_turn_left.mp3",
+      "text": "بَعْدَ كِيلُومِتْرٍ وَاحِدٍ، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_1km_exit": {
+      "file": "after_1km_exit.mp3",
+      "text": "بَعْدَ كِيلُومِتْرٍ وَاحِدٍ، اسْلُكِ الْمَخْرَج",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "continue_for_2km": {
+      "file": "continue_for_2km.mp3",
+      "text": "اسْتَمِرَّ عَلَى هَذَا الطَّرِيقِ لِمَسَافَةِ كِيلُومِتْرَيْن",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "continue_for_5km": {
+      "file": "continue_for_5km.mp3",
+      "text": "اسْتَمِرَّ عَلَى هَذَا الطَّرِيقِ لِمَسَافَةِ خَمْسَةِ كِيلُومِتْرَات",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "roundabout_exit_1": {
+      "file": "roundabout_exit_1.mp3",
+      "text": "ثُمَّ اسْلُكِ الْمَخْرَجَ الأَوَّل",
+      "category": "roundabout",
+      "priority": 2
+    },
+    "roundabout_exit_2": {
+      "file": "roundabout_exit_2.mp3",
+      "text": "ثُمَّ اسْلُكِ الْمَخْرَجَ الثَّانِي",
+      "category": "roundabout",
+      "priority": 2
+    },
+    "roundabout_exit_3": {
+      "file": "roundabout_exit_3.mp3",
+      "text": "ثُمَّ اسْلُكِ الْمَخْرَجَ الثَّالِث",
+      "category": "roundabout",
+      "priority": 2
+    },
+    "roundabout_exit_4": {
+      "file": "roundabout_exit_4.mp3",
+      "text": "ثُمَّ اسْلُكِ الْمَخْرَجَ الرَّابِع",
+      "category": "roundabout",
+      "priority": 2
+    },
+    "keep_right": {
+      "file": "keep_right.mp3",
+      "text": "الْزَمِ الْمَسَارَ الأَيْمَن",
+      "category": "lane",
+      "priority": 2
+    },
+    "keep_left": {
+      "file": "keep_left.mp3",
+      "text": "الْزَمِ الْمَسَارَ الأَيْسَر",
+      "category": "lane",
+      "priority": 2
+    },
+    "keep_middle": {
+      "file": "keep_middle.mp3",
+      "text": "الْزَمِ الْمَسَارَ الأَوْسَط",
+      "category": "lane",
+      "priority": 2
+    },
+    "starting_navigation": {
+      "file": "starting_navigation.mp3",
+      "text": "بَدَأَتِ الْمِلَاحَة، نَتَمَنَّى لَكَ رِحْلَةً آمِنَة",
+      "category": "lifecycle",
+      "priority": 3
+    },
+    "rerouting": {
+      "file": "rerouting.mp3",
+      "text": "جَارٍ إِعَادَةُ احْتِسَابِ الْمَسَار",
+      "category": "route_status",
+      "priority": 3
+    },
+    "route_updated": {
+      "file": "route_updated.mp3",
+      "text": "تَمَّ تَحْدِيثُ الْمَسَار",
+      "category": "route_status",
+      "priority": 3
+    },
+    "gps_lost": {
+      "file": "gps_lost.mp3",
+      "text": "انْقَطَعَتْ إِشَارَةُ تَحْدِيدِ الْمَوَاقِع",
+      "category": "route_status",
+      "priority": 3
+    },
+    "gps_restored": {
+      "file": "gps_restored.mp3",
+      "text": "تَمَّتِ اسْتِعَادَةُ إِشَارَةِ تَحْدِيدِ الْمَوَاقِع",
+      "category": "route_status",
+      "priority": 3
+    },
+    "after_50m_turn_right": {
+      "file": "after_50m_turn_right.mp3",
+      "text": "بَعْدَ خَمْسِينَ مِتْرًا، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_close",
+      "priority": 0
+    },
+    "after_50m_turn_left": {
+      "file": "after_50m_turn_left.mp3",
+      "text": "بَعْدَ خَمْسِينَ مِتْرًا، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_close",
+      "priority": 0
+    },
+    "after_50m_roundabout": {
+      "file": "after_50m_roundabout.mp3",
+      "text": "بَعْدَ خَمْسِينَ مِتْرًا، ادْخُلِ الدَّوَّار",
+      "category": "maneuver_close",
+      "priority": 0
+    },
+    "after_25m_turn_right": {
+      "file": "after_25m_turn_right.mp3",
+      "text": "بَعْدَ خَمْسَةٍ وَعِشْرِينَ مِتْرًا، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_close",
+      "priority": 0
+    },
+    "after_25m_turn_left": {
+      "file": "after_25m_turn_left.mp3",
+      "text": "بَعْدَ خَمْسَةٍ وَعِشْرِينَ مِتْرًا، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_close",
+      "priority": 0
+    },
+    "after_250m_turn_right": {
+      "file": "after_250m_turn_right.mp3",
+      "text": "بَعْدَ مِئَتَيْنِ وَخَمْسِينَ مِتْرًا، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_250m_turn_left": {
+      "file": "after_250m_turn_left.mp3",
+      "text": "بَعْدَ مِئَتَيْنِ وَخَمْسِينَ مِتْرًا، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_400m_turn_right": {
+      "file": "after_400m_turn_right.mp3",
+      "text": "بَعْدَ أَرْبَعِمِئَةِ مِتْرٍ، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_400m_turn_left": {
+      "file": "after_400m_turn_left.mp3",
+      "text": "بَعْدَ أَرْبَعِمِئَةِ مِتْرٍ، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_750m_turn_right": {
+      "file": "after_750m_turn_right.mp3",
+      "text": "بَعْدَ سَبْعِمِئَةٍ وَخَمْسِينَ مِتْرًا، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_750m_turn_left": {
+      "file": "after_750m_turn_left.mp3",
+      "text": "بَعْدَ سَبْعِمِئَةٍ وَخَمْسِينَ مِتْرًا، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_2km_advance": {
+      "file": "after_2km_advance.mp3",
+      "text": "بَعْدَ كِيلُومِتْرَيْن، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_3km_advance": {
+      "file": "after_3km_advance.mp3",
+      "text": "بَعْدَ ثَلَاثَةِ كِيلُومِتْرَات، اسْلُكِ الْمَخْرَج",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_5km_advance": {
+      "file": "after_5km_advance.mp3",
+      "text": "بَعْدَ خَمْسَةِ كِيلُومِتْرَات، اسْلُكِ الْمَخْرَج",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_10km_advance": {
+      "file": "after_10km_advance.mp3",
+      "text": "بَعْدَ عَشَرَةِ كِيلُومِتْرَات، اسْلُكِ الْمَخْرَج",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "enter_tunnel_now": {
+      "file": "enter_tunnel_now.mp3",
+      "text": "ادْخُلِ النَّفَقَ الآن",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_500m_tunnel": {
+      "file": "after_500m_tunnel.mp3",
+      "text": "بَعْدَ خَمْسِمِئَةِ مِتْرٍ، ادْخُلِ النَّفَق",
+      "category": "infrastructure",
+      "priority": 2
+    },
+    "take_bridge_now": {
+      "file": "take_bridge_now.mp3",
+      "text": "اصْعَدِ الْجِسْرَ الآن",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_500m_bridge": {
+      "file": "after_500m_bridge.mp3",
+      "text": "بَعْدَ خَمْسِمِئَةِ مِتْرٍ، اصْعَدِ الْجِسْر",
+      "category": "infrastructure",
+      "priority": 2
+    },
+    "stay_under_bridge": {
+      "file": "stay_under_bridge.mp3",
+      "text": "الْزَمِ الْمَسَارَ تَحْتَ الْجِسْر",
+      "category": "infrastructure",
+      "priority": 2
+    },
+    "merge_traffic_now": {
+      "file": "merge_traffic_now.mp3",
+      "text": "انْدَمِجْ مَعَ حَرَكَةِ الْمُرُورِ الآن",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "continue_on_highway": {
+      "file": "continue_on_highway.mp3",
+      "text": "اسْتَمِرَّ عَلَى الطَّرِيقِ السَّرِيع",
+      "category": "infrastructure",
+      "priority": 2
+    },
+    "roundabout_exit_5": {
+      "file": "roundabout_exit_5.mp3",
+      "text": "ثُمَّ اسْلُكِ الْمَخْرَجَ الْخَامِس",
+      "category": "roundabout",
+      "priority": 2
+    },
+    "roundabout_exit_6": {
+      "file": "roundabout_exit_6.mp3",
+      "text": "ثُمَّ اسْلُكِ الْمَخْرَجَ السَّادِس",
+      "category": "roundabout",
+      "priority": 2
+    },
+    "leave_roundabout": {
+      "file": "leave_roundabout.mp3",
+      "text": "اخْرُجْ مِنَ الدَّوَّار",
+      "category": "roundabout",
+      "priority": 0
+    },
+    "destination_on_right": {
+      "file": "destination_on_right.mp3",
+      "text": "وُجْهَتُكَ سَتَكُونُ عَلَى الْيَمِين",
+      "category": "arrival",
+      "priority": 1
+    },
+    "destination_on_left": {
+      "file": "destination_on_left.mp3",
+      "text": "وُجْهَتُكَ سَتَكُونُ عَلَى الْيَسَار",
+      "category": "arrival",
+      "priority": 1
+    },
+    "arrived_successfully": {
+      "file": "arrived_successfully.mp3",
+      "text": "لَقَدْ وَصَلْتَ إِلَى وُجْهَتِكَ بِنَجَاح",
+      "category": "arrival",
+      "priority": 0
+    },
+    "traffic_ahead": {
+      "file": "traffic_ahead.mp3",
+      "text": "انْتَبِهْ، طَرِيقٌ مُزْدَحِمٌ أَمَامَك",
+      "category": "traffic",
+      "priority": 1
+    },
+    "faster_route_found": {
+      "file": "faster_route_found.mp3",
+      "text": "تَمَّ الْعُثُورُ عَلَى مَسَارٍ أَسْرَع، جَارٍ تَحْدِيثُ الْمَسَار",
+      "category": "traffic",
+      "priority": 2
+    },
+    "traffic_clear": {
+      "file": "traffic_clear.mp3",
+      "text": "حَرَكَةُ الْمُرُورِ أَمَامَكَ سَالِكَة",
+      "category": "traffic",
+      "priority": 3
+    },
+    "heavy_traffic_warning": {
+      "file": "heavy_traffic_warning.mp3",
+      "text": "ازْدِحَامٌ شَدِيد، تَوَقَّعْ بَعْضَ التَّأْخِير",
+      "category": "traffic",
+      "priority": 1
+    },
+    "eta_5_mins": {
+      "file": "eta_5_mins.mp3",
+      "text": "الْوُصُولُ بَعْدَ خَمْسِ دَقَائِق",
+      "category": "eta",
+      "priority": 3
+    },
+    "eta_10_mins": {
+      "file": "eta_10_mins.mp3",
+      "text": "الْوُصُولُ بَعْدَ عَشْرِ دَقَائِق",
+      "category": "eta",
+      "priority": 3
+    },
+    "eta_15_mins": {
+      "file": "eta_15_mins.mp3",
+      "text": "الْوُصُولُ بَعْدَ خَمْسَ عَشْرَةَ دَقِيقَة",
+      "category": "eta",
+      "priority": 3
+    },
+    "eta_20_mins": {
+      "file": "eta_20_mins.mp3",
+      "text": "الْوُصُولُ بَعْدَ عِشْرِينَ دَقِيقَة",
+      "category": "eta",
+      "priority": 3
+    },
+    "eta_30_mins": {
+      "file": "eta_30_mins.mp3",
+      "text": "الْوُصُولُ بَعْدَ نِصْفِ سَاعَة",
+      "category": "eta",
+      "priority": 3
+    },
+    "eta_45_mins": {
+      "file": "eta_45_mins.mp3",
+      "text": "الْوُصُولُ بَعْدَ خَمْسٍ وَأَرْبَعِينَ دَقِيقَة",
+      "category": "eta",
+      "priority": 3
+    },
+    "eta_1_hour": {
+      "file": "eta_1_hour.mp3",
+      "text": "الْوُصُولُ بَعْدَ سَاعَةٍ وَاحِدَة",
+      "category": "eta",
+      "priority": 3
+    },
+    "prepare_turn_right": {
+      "file": "prepare_turn_right.mp3",
+      "text": "اسْتَعِدَّ لِلانْعِطَافِ يَمِينًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "prepare_turn_left": {
+      "file": "prepare_turn_left.mp3",
+      "text": "اسْتَعِدَّ لِلانْعِطَافِ يَسَارًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "prepare_u_turn": {
+      "file": "prepare_u_turn.mp3",
+      "text": "اسْتَعِدَّ لِلدَّوَرَانِ لِلْخَلْف",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "straight_through_intersection": {
+      "file": "straight_through_intersection.mp3",
+      "text": "تَابِعِ السَّيْرَ لِلأَمَامِ عَبْرَ التَّقَاطُع",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "exit_service_road": {
+      "file": "exit_service_road.mp3",
+      "text": "اخْرُجْ مِنْ طَرِيقِ الْخِدْمَة",
+      "category": "infrastructure",
+      "priority": 2
+    },
+    "enter_service_road": {
+      "file": "enter_service_road.mp3",
+      "text": "ادْخُلْ طَرِيقَ الْخِدْمَة",
+      "category": "infrastructure",
+      "priority": 2
+    },
+    "take_on_ramp_now": {
+      "file": "take_on_ramp_now.mp3",
+      "text": "اسْلُكِ الْمَدْخَلَ الآن",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "take_off_ramp_now": {
+      "file": "take_off_ramp_now.mp3",
+      "text": "اسْلُكِ الْمَخْرَجَ الْجَانِبِيَّ الآن",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "keep_straight_now": {
+      "file": "keep_straight_now.mp3",
+      "text": "وَاصِلِ السَّيْرَ إِلَى الأَمَام",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "fork_left_now": {
+      "file": "fork_left_now.mp3",
+      "text": "الْزَمِ الْمَسَارَ الْمُتَفَرِّعَ يَسَارًا",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "fork_right_now": {
+      "file": "fork_right_now.mp3",
+      "text": "الْزَمِ الْمَسَارَ الْمُتَفَرِّعَ يَمِينًا",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "end_of_road_turn_left": {
+      "file": "end_of_road_turn_left.mp3",
+      "text": "عِنْدَ نِهَايَةِ الطَّرِيق، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "end_of_road_turn_right": {
+      "file": "end_of_road_turn_right.mp3",
+      "text": "عِنْدَ نِهَايَةِ الطَّرِيق، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "after_50m_u_turn": {
+      "file": "after_50m_u_turn.mp3",
+      "text": "بَعْدَ خَمْسِينَ مِتْرًا، قُمْ بِالدَّوَرَانِ لِلْخَلْف",
+      "category": "maneuver_close",
+      "priority": 0
+    },
+    "after_150m_roundabout": {
+      "file": "after_150m_roundabout.mp3",
+      "text": "بَعْدَ مِئَةٍ وَخَمْسِينَ مِتْرًا، ادْخُلِ الدَّوَّار",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_200m_roundabout": {
+      "file": "after_200m_roundabout.mp3",
+      "text": "بَعْدَ مِئَتَيْ مِتْرٍ، ادْخُلِ الدَّوَّار",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_250m_roundabout": {
+      "file": "after_250m_roundabout.mp3",
+      "text": "بَعْدَ مِئَتَيْنِ وَخَمْسِينَ مِتْرًا، ادْخُلِ الدَّوَّار",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_400m_roundabout": {
+      "file": "after_400m_roundabout.mp3",
+      "text": "بَعْدَ أَرْبَعِمِئَةِ مِتْرٍ، ادْخُلِ الدَّوَّار",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_750m_roundabout": {
+      "file": "after_750m_roundabout.mp3",
+      "text": "بَعْدَ سَبْعِمِئَةٍ وَخَمْسِينَ مِتْرًا، ادْخُلِ الدَّوَّار",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_1km_roundabout": {
+      "file": "after_1km_roundabout.mp3",
+      "text": "بَعْدَ كِيلُومِتْرٍ وَاحِدٍ، ادْخُلِ الدَّوَّار",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_2km_roundabout": {
+      "file": "after_2km_roundabout.mp3",
+      "text": "بَعْدَ كِيلُومِتْرَيْن، ادْخُلِ الدَّوَّار",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "camera_speed_50": {
+      "file": "camera_speed_50.mp3",
+      "text": "انْتَبِهْ، كَامِيرَا سُرْعَة، السَّرْعَةُ الْمُحَدَّدَةُ خَمْسُونَ كِيلُومِتْرًا فِي السَّاعَة",
+      "category": "safety",
+      "priority": 1
+    },
+    "camera_speed_70": {
+      "file": "camera_speed_70.mp3",
+      "text": "انْتَبِهْ، كَامِيرَا سُرْعَة، السَّرْعَةُ الْمُحَدَّدَةُ سَبْعُونَ كِيلُومِتْرًا فِي السَّاعَة",
+      "category": "safety",
+      "priority": 1
+    },
+    "camera_speed_110": {
+      "file": "camera_speed_110.mp3",
+      "text": "انْتَبِهْ، كَامِيرَا سُرْعَة، السَّرْعَةُ الْمُحَدَّدَةُ مِئَةٌ وَعَشَرَةُ كِيلُومِتْرَاتٍ فِي السَّاعَة",
+      "category": "safety",
+      "priority": 1
+    },
+    "red_light_camera_ahead": {
+      "file": "red_light_camera_ahead.mp3",
+      "text": "انْتَبِهْ، كَامِيرَا إِشَارَةٍ ضَوْئِيَّةٍ أَمَامَك",
+      "category": "safety",
+      "priority": 1
+    },
+    "toward_airport_road": {
+      "file": "toward_airport_road.mp3",
+      "text": "بِاتِّجَاهِ طَرِيقِ الْمَطَار",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_jordan_street": {
+      "file": "toward_jordan_street.mp3",
+      "text": "بِاتِّجَاهِ شَارِعِ الأُرْدُن",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_mecca_street": {
+      "file": "toward_mecca_street.mp3",
+      "text": "بِاتِّجَاهِ شَارِعِ مَكَّة",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_medina_street": {
+      "file": "toward_medina_street.mp3",
+      "text": "بِاتِّجَاهِ شَارِعِ الْمَدِينَةِ الْمُنَوَّرَة",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_zarqa_highway": {
+      "file": "toward_zarqa_highway.mp3",
+      "text": "بِاتِّجَاهِ أُوتُوسْتْرَاد عَمَّان الزَّرْقَاء",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_zahran_street": {
+      "file": "toward_zahran_street.mp3",
+      "text": "بِاتِّجَاهِ شَارِعِ زَهْرَان",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_istiqlal_street": {
+      "file": "toward_istiqlal_street.mp3",
+      "text": "بِاتِّجَاهِ شَارِعِ الاسْتِقْلال",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_queen_rania_street": {
+      "file": "toward_queen_rania_street.mp3",
+      "text": "بِاتِّجَاهِ شَارِعِ الْمَلِكَةِ رَانْيَا",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_yarmouk_street": {
+      "file": "toward_yarmouk_street.mp3",
+      "text": "بِاتِّجَاهِ شَارِعِ الْيَرْمُوك",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_al_quds_street": {
+      "file": "toward_al_quds_street.mp3",
+      "text": "بِاتِّجَاهِ شَارِعِ الْقُدْس",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_hezam_highway": {
+      "file": "toward_hezam_highway.mp3",
+      "text": "بِاتِّجَاهِ طَرِيقِ الْحِزَامِ الدَّائِرِي",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_gardens_street": {
+      "file": "toward_gardens_street.mp3",
+      "text": "بِاتِّجَاهِ شَارِعِ وَصْفِي التَّل، الْجَارْدِنْز",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_abdoun_bridge": {
+      "file": "toward_abdoun_bridge.mp3",
+      "text": "بِاتِّجَاهِ جِسْرِ عَبْدُونِ الْمُعَلَّق",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_dakhiliya_circle": {
+      "file": "toward_dakhiliya_circle.mp3",
+      "text": "بِاتِّجَاهِ دَوَّارِ الدَّاخِلِيَّة",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_7th_circle": {
+      "file": "toward_7th_circle.mp3",
+      "text": "بِاتِّجَاهِ الدَّوَّارِ السَّابِع",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_8th_circle": {
+      "file": "toward_8th_circle.mp3",
+      "text": "بِاتِّجَاهِ الدَّوَّارِ الثَّامِن",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_sweileh_circle": {
+      "file": "toward_sweileh_circle.mp3",
+      "text": "بِاتِّجَاهِ دَوَّارِ صُوَيْلِح",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_waha_circle": {
+      "file": "toward_waha_circle.mp3",
+      "text": "بِاتِّجَاهِ دَوَّارِ الْوَاحَة",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_middle_east_circle": {
+      "file": "toward_middle_east_circle.mp3",
+      "text": "بِاتِّجَاهِ دَوَّارِ الشَّرْقِ الأَوْسَط",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "toward_downtown_amman": {
+      "file": "toward_downtown_amman.mp3",
+      "text": "بِاتِّجَاهِ وَسَطِ الْبَلَد",
+      "category": "artery_amman",
+      "priority": 2
+    },
+    "speed_bump_ahead": {
+      "file": "speed_bump_ahead.mp3",
+      "text": "انْتَبِهْ، مَطَبٌّ صِنَاعِيٌّ أَمَامَك",
+      "category": "hazards",
+      "priority": 1
+    },
+    "steep_incline_ahead": {
+      "file": "steep_incline_ahead.mp3",
+      "text": "انْتَبِهْ، صُعُودٌ حَادٌّ أَمَامَك",
+      "category": "hazards",
+      "priority": 2
+    },
+    "steep_descent_ahead": {
+      "file": "steep_descent_ahead.mp3",
+      "text": "انْتَبِهْ، نُزُولٌ حَادّ، اسْتَخْدِمِ الْغِيَارَ الْعَكْسِي",
+      "category": "hazards",
+      "priority": 1
+    },
+    "road_work_ahead": {
+      "file": "road_work_ahead.mp3",
+      "text": "انْتَبِهْ، أَعْمَالُ طُرُقٍ أَمَامَك",
+      "category": "hazards",
+      "priority": 2
+    },
+    "accident_ahead": {
+      "file": "accident_ahead.mp3",
+      "text": "انْتَبِهْ، حَادِثٌ مَرُورِيٌّ أَمَامَك",
+      "category": "hazards",
+      "priority": 1
+    },
+    "poor_visibility_fog": {
+      "file": "poor_visibility_fog.mp3",
+      "text": "انْتَبِهْ، مَجَالُ الرُّؤْيَةِ مُنْخَفِض، قُمْ بِتَهْدِئَةِ السُّرْعَة",
+      "category": "hazards",
+      "priority": 1
+    },
+    "turn_slight_right_now": {
+      "file": "turn_slight_right_now.mp3",
+      "text": "انْعَطِفْ قَلِيلًا إِلَى الْيَمِين",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "turn_slight_left_now": {
+      "file": "turn_slight_left_now.mp3",
+      "text": "انْعَطِفْ قَلِيلًا إِلَى الْيَسَار",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "keep_right_at_fork": {
+      "file": "keep_right_at_fork.mp3",
+      "text": "عِنْدَ الْمُفْتَرَق، الْزَمِ الْمَسَارَ الأَيْمَن",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "keep_left_at_fork": {
+      "file": "keep_left_at_fork.mp3",
+      "text": "عِنْدَ الْمُفْتَرَق، الْزَمِ الْمَسَارَ الأَيْسَر",
+      "category": "maneuver_immediate",
+      "priority": 0
+    },
+    "stay_on_current_road": {
+      "file": "stay_on_current_road.mp3",
+      "text": "ابْقَ عَلَى الطَّرِيقِ الْحَالِي",
+      "category": "maneuver_immediate",
+      "priority": 1
+    },
+    "pass_roundabout_straight": {
+      "file": "pass_roundabout_straight.mp3",
+      "text": "تَابِعِ السَّيْرَ مُبَاشَرَةً عَبْرَ الدَّوَّار",
+      "category": "roundabout",
+      "priority": 0
+    },
+    "enter_rotary_now": {
+      "file": "enter_rotary_now.mp3",
+      "text": "ادْخُلِ الْمَيْدَانَ الآن",
+      "category": "roundabout",
+      "priority": 0
+    },
+    "exit_rotary_now": {
+      "file": "exit_rotary_now.mp3",
+      "text": "اخْرُجْ مِنَ الْمَيْدَانِ الآن",
+      "category": "roundabout",
+      "priority": 0
+    },
+    "rotary_exit_1": {
+      "file": "rotary_exit_1.mp3",
+      "text": "اسْلُكِ الْمَخْرَجَ الأَوَّلَ مِنَ الْمَيْدَان",
+      "category": "roundabout",
+      "priority": 0
+    },
+    "rotary_exit_2": {
+      "file": "rotary_exit_2.mp3",
+      "text": "اسْلُكِ الْمَخْرَجَ الثَّانِي مِنَ الْمَيْدَان",
+      "category": "roundabout",
+      "priority": 0
+    },
+    "rotary_exit_3": {
+      "file": "rotary_exit_3.mp3",
+      "text": "اسْلُكِ الْمَخْرَجَ الثَّالِثَ مِنَ الْمَيْدَان",
+      "category": "roundabout",
+      "priority": 0
+    },
+    "rotary_exit_4": {
+      "file": "rotary_exit_4.mp3",
+      "text": "اسْلُكِ الْمَخْرَجَ الرَّابِعَ مِنَ الْمَيْدَان",
+      "category": "roundabout",
+      "priority": 0
+    },
+    "use_2_left_lanes": {
+      "file": "use_2_left_lanes.mp3",
+      "text": "اسْتَخْدِمِ الْمَسَارَيْنِ الأَيْسَرَيْن",
+      "category": "lane",
+      "priority": 1
+    },
+    "use_2_right_lanes": {
+      "file": "use_2_right_lanes.mp3",
+      "text": "اسْتَخْدِمِ الْمَسَارَيْنِ الأَيْمَنَيْن",
+      "category": "lane",
+      "priority": 1
+    },
+    "stay_in_middle_lanes": {
+      "file": "stay_in_middle_lanes.mp3",
+      "text": "الْزَمِ الْمَسَارَاتِ الْوُسْطَى",
+      "category": "lane",
+      "priority": 1
+    },
+    "merge_left_safely": {
+      "file": "merge_left_safely.mp3",
+      "text": "انْدَمِجْ يَسَارًا بِحَذَر",
+      "category": "lane",
+      "priority": 1
+    },
+    "merge_right_safely": {
+      "file": "merge_right_safely.mp3",
+      "text": "انْدَمِجْ يَمِينًا بِحَذَر",
+      "category": "lane",
+      "priority": 1
+    },
+    "take_underpass_tunnel": {
+      "file": "take_underpass_tunnel.mp3",
+      "text": "ادْخُلِ النَّفَقَ السُّفْلِي",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "take_overpass_bridge": {
+      "file": "take_overpass_bridge.mp3",
+      "text": "اصْعَدِ الْجِسْرَ الْعُلْوِي",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "avoid_bridge_take_side": {
+      "file": "avoid_bridge_take_side.mp3",
+      "text": "لا تَصْعَدِ الْجِسْر، الْزَمِ الطَّرِيقَ الْجَانِبِي",
+      "category": "infrastructure",
+      "priority": 1
+    },
+    "avoid_tunnel_take_side": {
+      "file": "avoid_tunnel_take_side.mp3",
+      "text": "لا تَدْخُلِ النَّفَق، الْزَمِ الطَّرِيقَ الْجَانِبِي",
+      "category": "infrastructure",
+      "priority": 1
+    },
+    "enter_highway_ramp": {
+      "file": "enter_highway_ramp.mp3",
+      "text": "ادْخُلِ الطَّرِيقَ السَّرِيعَ عَبْرَ الْمَدْخَل",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "exit_highway_ramp": {
+      "file": "exit_highway_ramp.mp3",
+      "text": "اخْرُجْ مِنَ الطَّرِيقِ السَّرِيع",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_75m_turn_right": {
+      "file": "after_75m_turn_right.mp3",
+      "text": "بَعْدَ خَمْسَةٍ وَسَبْعِينَ مِتْرًا، انْعَطِفْ يَمِينًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_75m_turn_left": {
+      "file": "after_75m_turn_left.mp3",
+      "text": "بَعْدَ خَمْسَةٍ وَسَبْعِينَ مِتْرًا، انْعَطِفْ يَسَارًا",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_150m_u_turn": {
+      "file": "after_150m_u_turn.mp3",
+      "text": "بَعْدَ مِئَةٍ وَخَمْسِينَ مِتْرًا، قُمْ بِالدَّوَرَانِ لِلْخَلْف",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_200m_u_turn": {
+      "file": "after_200m_u_turn.mp3",
+      "text": "بَعْدَ مِئَتَيْ مِتْرٍ، قُمْ بِالدَّوَرَانِ لِلْخَلْف",
+      "category": "maneuver_prepare",
+      "priority": 2
+    },
+    "after_500m_u_turn": {
+      "file": "after_500m_u_turn.mp3",
+      "text": "بَعْدَ خَمْسِمِئَةِ مِتْرٍ، قُمْ بِالدَّوَرَانِ لِلْخَلْف",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "after_1km_u_turn": {
+      "file": "after_1km_u_turn.mp3",
+      "text": "بَعْدَ كِيلُومِتْرٍ وَاحِدٍ، قُمْ بِالدَّوَرَانِ لِلْخَلْف",
+      "category": "maneuver_advance",
+      "priority": 2
+    },
+    "destination_ahead": {
+      "file": "destination_ahead.mp3",
+      "text": "وُجْهَتُكَ أَمَامَكَ مُبَاشَرَة",
+      "category": "arrival",
+      "priority": 0
+    },
+    "approaching_destination": {
+      "file": "approaching_destination.mp3",
+      "text": "اقْتَرَبْتَ مِنَ الْوُصُولِ إِلَى وُجْهَتِك",
+      "category": "arrival",
+      "priority": 1
+    },
+    "waypoint_reached": {
+      "file": "waypoint_reached.mp3",
+      "text": "لَقَدْ وَصَلْتَ إِلَى نُقْطَةِ التَّوَقُّفِ الْمُحَدَّدَة",
+      "category": "arrival",
+      "priority": 1
+    },
+    "continue_to_final_destination": {
+      "file": "continue_to_final_destination.mp3",
+      "text": "تَابِعِ السَّيْرَ إِلَى الْوُجْهَةِ النِّهَائِيَّة",
+      "category": "arrival",
+      "priority": 2
+    },
+    "street_queen_alia_airport": {
+      "file": "street_queen_alia_airport.mp3",
+      "text": "شَارِعُ مَطَارِ الْمَلِكَةِ عَلْيَاء",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_queen_rania": {
+      "file": "street_queen_rania.mp3",
+      "text": "شَارِعُ الْمَلِكَةِ رَانْيَا الْعَبْدِ اللَّه",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_queen_noor": {
+      "file": "street_queen_noor.mp3",
+      "text": "شَارِعُ الْمَلِكَةِ نُور",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_king_hussein": {
+      "file": "street_king_hussein.mp3",
+      "text": "شَارِعُ الْمَلِكِ حُسَيْن",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_king_abdullah_1": {
+      "file": "street_king_abdullah_1.mp3",
+      "text": "شَارِعُ الْمَلِكِ عَبْدِ اللَّهِ الأَوَّل",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_king_abdullah_2": {
+      "file": "street_king_abdullah_2.mp3",
+      "text": "شَارِعُ الْمَلِكِ عَبْدِ اللَّهِ الثَّانِي",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_king_faisal": {
+      "file": "street_king_faisal.mp3",
+      "text": "شَارِعُ الْمَلِكِ فَيْصَل",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_wasfi_al_tal": {
+      "file": "street_wasfi_al_tal.mp3",
+      "text": "شَارِعُ الشَّهِيدِ وَصْفِي التَّل",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_shaheed": {
+      "file": "street_al_shaheed.mp3",
+      "text": "شَارِعُ الشَّهِيد",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_jaysh": {
+      "file": "street_al_jaysh.mp3",
+      "text": "شَارِعُ الْجَيْش",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_istiqlal": {
+      "file": "street_al_istiqlal.mp3",
+      "text": "شَارِعُ الاسْتِقْلال",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_yarmouk": {
+      "file": "street_al_yarmouk.mp3",
+      "text": "شَارِعُ الْيَرْمُوك",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_quds": {
+      "file": "street_al_quds.mp3",
+      "text": "شَارِعُ الْقُدْس",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_hurriyah": {
+      "file": "street_al_hurriyah.mp3",
+      "text": "شَارِعُ الْحُرِّيَّة",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_hezam": {
+      "file": "street_al_hezam.mp3",
+      "text": "طَرِيقُ الْحِزَامِ الدَّائِرِي",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_urdun": {
+      "file": "street_al_urdun.mp3",
+      "text": "شَارِعُ الأُرْدُن",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_mecca": {
+      "file": "street_mecca.mp3",
+      "text": "شَارِعُ مَكَّة",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_medina_munawwara": {
+      "file": "street_medina_munawwara.mp3",
+      "text": "شَارِعُ الْمَدِينَةِ الْمُنَوَّرَة",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_zahran": {
+      "file": "street_zahran.mp3",
+      "text": "شَارِعُ زَهْرَان",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_rainbow": {
+      "file": "street_rainbow.mp3",
+      "text": "شَارِعُ الرِّينْبُو",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_yajouj": {
+      "file": "street_yajouj.mp3",
+      "text": "شَارِعُ يَأْجُوز",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_salt": {
+      "file": "street_al_salt.mp3",
+      "text": "شَارِعُ السَّلْط",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_prince_hashem": {
+      "file": "street_prince_hashem.mp3",
+      "text": "شَارِعُ الأَمِيرِ هَاشِمِ بْنِ الْحُسَيْن",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_prince_hussein": {
+      "file": "street_prince_hussein.mp3",
+      "text": "شَارِعُ الأَمِيرِ الْحُسَيْنِ بْنِ عَبْدِ اللَّه",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_prince_talal": {
+      "file": "street_prince_talal.mp3",
+      "text": "شَارِعُ الأَمِيرِ طَلالِ بْنِ مُحَمَّد",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_princess_haya": {
+      "file": "street_princess_haya.mp3",
+      "text": "شَارِعُ الأَمِيرَةِ هَيَا بِنْتِ الْحُسَيْن",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_princess_taghrid": {
+      "file": "street_princess_taghrid.mp3",
+      "text": "شَارِعُ الأَمِيرَةِ تَغْرِيدِ مُحَمَّد",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_sharif_nasser": {
+      "file": "street_sharif_nasser.mp3",
+      "text": "شَارِعُ الشَّرِيفِ نَاصِرِ بْنِ جَمِيل",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_khalid_ibn_alwalid": {
+      "file": "street_khalid_ibn_alwalid.mp3",
+      "text": "شَارِعُ خَالِدِ بْنِ الْوَلِيد",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_ali_ibn_abi_talib": {
+      "file": "street_ali_ibn_abi_talib.mp3",
+      "text": "شَارِعُ عَلِيِّ بْنِ أَبِي طَالِب",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_abu_bakr_al_siddiq": {
+      "file": "street_abu_bakr_al_siddiq.mp3",
+      "text": "شَارِعُ أَبِي بَكْرٍ الصِّدِّيق",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_hashemi": {
+      "file": "street_al_hashemi.mp3",
+      "text": "شَارِعُ الْهَاشِمِي",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_quraish": {
+      "file": "street_quraish.mp3",
+      "text": "شَارِعُ قُرَيْش",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_madraj": {
+      "file": "street_al_madraj.mp3",
+      "text": "شَارِعُ الْمَدْرَج",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_sakhrah_musharrafa": {
+      "file": "street_sakhrah_musharrafa.mp3",
+      "text": "شَارِعُ الصَّخْرَةِ الْمُشَرَّفَة",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_kindi": {
+      "file": "street_al_kindi.mp3",
+      "text": "شَارِعُ الْكِنْدِي",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_al_razi": {
+      "file": "street_al_razi.mp3",
+      "text": "شَارِعُ الرَّازِي",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "street_tareq": {
+      "file": "street_tareq.mp3",
+      "text": "شَارِعُ طَارِق",
+      "category": "street_amman",
+      "priority": 2
+    },
+    "then_turn_right": {
+      "file": "then_turn_right.mp3",
+      "text": "ثُمَّ انْعَطِفْ يَمِينًا",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_turn_left": {
+      "file": "then_turn_left.mp3",
+      "text": "ثُمَّ انْعَطِفْ يَسَارًا",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_slight_right": {
+      "file": "then_slight_right.mp3",
+      "text": "ثُمَّ انْحَرِفْ قَلِيلًا إِلَى الْيَمِين",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_slight_left": {
+      "file": "then_slight_left.mp3",
+      "text": "ثُمَّ انْحَرِفْ قَلِيلًا إِلَى الْيَسَار",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_sharp_right": {
+      "file": "then_sharp_right.mp3",
+      "text": "ثُمَّ انْعَطِفْ حَادًّا إِلَى الْيَمِين",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_sharp_left": {
+      "file": "then_sharp_left.mp3",
+      "text": "ثُمَّ انْعَطِفْ حَادًّا إِلَى الْيَسَار",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_keep_right": {
+      "file": "then_keep_right.mp3",
+      "text": "ثُمَّ الْزَمِ الْمَسَارَ الأَيْمَن",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_keep_left": {
+      "file": "then_keep_left.mp3",
+      "text": "ثُمَّ الْزَمِ الْمَسَارَ الأَيْسَر",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_u_turn": {
+      "file": "then_u_turn.mp3",
+      "text": "ثُمَّ قُمْ بِالدَّوَرَانِ لِلْخَلْف",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_enter_roundabout": {
+      "file": "then_enter_roundabout.mp3",
+      "text": "ثُمَّ ادْخُلِ الدَّوَّار",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_enter_tunnel": {
+      "file": "then_enter_tunnel.mp3",
+      "text": "ثُمَّ ادْخُلِ النَّفَق",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "then_take_bridge": {
+      "file": "then_take_bridge.mp3",
+      "text": "ثُمَّ اصْعَدِ الْجِسْر",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "enter_tunnel_keep_left": {
+      "file": "enter_tunnel_keep_left.mp3",
+      "text": "الْزَمِ الْمَسَارَ الأَيْسَر، وَادْخُلِ النَّفَق",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "enter_tunnel_keep_right": {
+      "file": "enter_tunnel_keep_right.mp3",
+      "text": "الْزَمِ الْمَسَارَ الأَيْمَن، وَادْخُلِ النَّفَق",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "enter_tunnel_slight_left": {
+      "file": "enter_tunnel_slight_left.mp3",
+      "text": "انْحَرِفْ قَلِيلًا إِلَى الْيَسَار، وَادْخُلِ النَّفَق",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "enter_tunnel_slight_right": {
+      "file": "enter_tunnel_slight_right.mp3",
+      "text": "انْحَرِفْ قَلِيلًا إِلَى الْيَمِين، وَادْخُلِ النَّفَق",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "take_bridge_keep_left": {
+      "file": "take_bridge_keep_left.mp3",
+      "text": "الْزَمِ الْمَسَارَ الأَيْسَر، وَاصْعَدِ الْجِسْر",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "take_bridge_keep_right": {
+      "file": "take_bridge_keep_right.mp3",
+      "text": "الْزَمِ الْمَسَارَ الأَيْمَن، وَاصْعَدِ الْجِسْر",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "take_bridge_slight_left": {
+      "file": "take_bridge_slight_left.mp3",
+      "text": "انْحَرِفْ قَلِيلًا إِلَى الْيَسَار، وَاصْعَدِ الْجِسْر",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "take_bridge_slight_right": {
+      "file": "take_bridge_slight_right.mp3",
+      "text": "انْحَرِفْ قَلِيلًا إِلَى الْيَمِين، وَاصْعَدِ الْجِسْر",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_100m_enter_tunnel": {
+      "file": "after_100m_enter_tunnel.mp3",
+      "text": "بَعْدَ مِئَةِ مِتْرٍ، ادْخُلِ النَّفَق",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_200m_enter_tunnel": {
+      "file": "after_200m_enter_tunnel.mp3",
+      "text": "بَعْدَ مِئَتَيْ مِتْرٍ، ادْخُلِ النَّفَق",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_300m_enter_tunnel": {
+      "file": "after_300m_enter_tunnel.mp3",
+      "text": "بَعْدَ ثَلَاثِمِئَةِ مِتْرٍ، ادْخُلِ النَّفَق",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_500m_enter_tunnel": {
+      "file": "after_500m_enter_tunnel.mp3",
+      "text": "بَعْدَ خَمْسِمِئَةِ مِتْرٍ، ادْخُلِ النَّفَق",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_100m_take_bridge": {
+      "file": "after_100m_take_bridge.mp3",
+      "text": "بَعْدَ مِئَةِ مِتْرٍ، اصْعَدِ الْجِسْر",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_200m_take_bridge": {
+      "file": "after_200m_take_bridge.mp3",
+      "text": "بَعْدَ مِئَتَيْ مِتْرٍ، اصْعَدِ الْجِسْر",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_300m_take_bridge": {
+      "file": "after_300m_take_bridge.mp3",
+      "text": "بَعْدَ ثَلَاثِمِئَةِ مِتْرٍ، اصْعَدِ الْجِسْر",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_500m_take_bridge": {
+      "file": "after_500m_take_bridge.mp3",
+      "text": "بَعْدَ خَمْسِمِئَةِ مِتْرٍ، اصْعَدِ الْجِسْر",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "then_take_kobri": {
+      "file": "then_take_kobri.mp3",
+      "text": "ثُمَّ اصْعَدِ الْكُوبْرِي",
+      "category": "maneuver_chain",
+      "priority": 0
+    },
+    "take_kobri_now": {
+      "file": "take_kobri_now.mp3",
+      "text": "اصْعَدِ الْكُوبْرِي الآن",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "take_kobri_keep_left": {
+      "file": "take_kobri_keep_left.mp3",
+      "text": "الْزَمِ الْمَسَارَ الأَيْسَر، وَاصْعَدِ الْكُوبْرِي",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "take_kobri_keep_right": {
+      "file": "take_kobri_keep_right.mp3",
+      "text": "الْزَمِ الْمَسَارَ الأَيْمَن، وَاصْعَدِ الْكُوبْرِي",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "take_kobri_slight_left": {
+      "file": "take_kobri_slight_left.mp3",
+      "text": "انْحَرِفْ قَلِيلًا إِلَى الْيَسَار، وَاصْعَدِ الْكُوبْرِي",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "take_kobri_slight_right": {
+      "file": "take_kobri_slight_right.mp3",
+      "text": "انْحَرِفْ قَلِيلًا إِلَى الْيَمِين، وَاصْعَدِ الْكُوبْرِي",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_100m_take_kobri": {
+      "file": "after_100m_take_kobri.mp3",
+      "text": "بَعْدَ مِئَةِ مِتْرٍ، اصْعَدِ الْكُوبْرِي",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_200m_take_kobri": {
+      "file": "after_200m_take_kobri.mp3",
+      "text": "بَعْدَ مِئَتَيْ مِتْرٍ، اصْعَدِ الْكُوبْرِي",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_300m_take_kobri": {
+      "file": "after_300m_take_kobri.mp3",
+      "text": "بَعْدَ ثَلَاثِمِئَةِ مِتْرٍ، اصْعَدِ الْكُوبْرِي",
+      "category": "infrastructure",
+      "priority": 0
+    },
+    "after_500m_take_kobri": {
+      "file": "after_500m_take_kobri.mp3",
+      "text": "بَعْدَ خَمْسِمِئَةِ مِتْرٍ، اصْعَدِ الْكُوبْرِي",
+      "category": "infrastructure",
+      "priority": 0
+    }
+  },
+  "updated_at": 1793826632,
+  "total_prompts": 209
+}

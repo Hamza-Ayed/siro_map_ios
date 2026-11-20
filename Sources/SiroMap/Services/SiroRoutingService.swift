@@ -9,6 +9,10 @@ public struct SiroRouteStep: Codable {
     public let durationSeconds: Double
     public let maneuverSign: Int
     public let inclinePercentage: Double
+    /// `tunnel` or `bridge` when this maneuver leads into one (server `env_next`).
+    public var envNext: String? = nil
+    /// `kobri` when the bridge is called "كوبري" in this country (Egypt, Saudi Arabia).
+    public var envVariant: String? = nil
 }
 
 public struct SiroCommercialRoute: Codable {
@@ -85,7 +89,9 @@ public class SiroRoutingService {
                                 distanceMeters: $0["distance"] as? Double ?? 0.0,
                                 durationSeconds: ($0["time"] as? Double ?? 0.0) / 1000.0,
                                 maneuverSign: $0["sign"] as? Int ?? 0,
-                                inclinePercentage: 0.0
+                                inclinePercentage: 0.0,
+                                envNext: $0["env_next"] as? String,
+                                envVariant: $0["env_variant"] as? String
                             )
                         }
                     }

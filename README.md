@@ -20,13 +20,13 @@ Commercial 2D & 3D sovereign vector map SDK for iOS supporting 3D terrain elevat
    ```
    https://github.com/Hamza-Ayed/siro_map_ios.git
    ```
-4. Select version `1.0.0` or `Up to Next Major Version` and click **Add Package**.
+4. Select version `1.2.0` or `Up to Next Major Version` and click **Add Package**.
 
 Or in your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Hamza-Ayed/siro_map_ios.git", from: "1.0.0")
+    .package(url: "https://github.com/Hamza-Ayed/siro_map_ios.git", from: "1.2.0")
 ]
 ```
 
@@ -34,7 +34,7 @@ dependencies: [
 Add to your `Podfile`:
 
 ```ruby
-pod 'SiroMap', '~> 1.0.0'
+pod 'SiroMap', '~> 1.2.0'
 ```
 
 ---
@@ -159,3 +159,16 @@ SiroGeocodingService.shared.reverseGeocode(position: pos) { result in
 
 ## License
 MIT License. © 2026 Siro Platform.
+
+## Voice guidance (1.2.0)
+
+The package bundles the recorded Arabic voice packs (Salma and Ahmed, 237 clips each, no network needed).
+
+```swift
+let voice = SiroNavVoice(gender: .female)
+// step: SiroRouteStep from SiroRoutingService; followUp: a maneuver within ~100 m after it, or nil
+voice.announce(step, distanceMeters: 180, followUp: nextStep)
+voice.stop()
+```
+
+Tunnel/bridge steps (`SiroRouteStep.envNext`) play "keep left and enter the tunnel"; in Egypt and Saudi Arabia the bridge is "كوبري" (`envVariant`).

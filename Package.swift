@@ -18,7 +18,8 @@ let package = Package(
         .target(
             name: "SiroMap",
             dependencies: [],
-            path: "Sources/SiroMap"
+            path: "Sources/SiroMap",
+            resources: [.copy("Resources/audio")]
         ),
         .testTarget(
             name: "SiroMapTests",
